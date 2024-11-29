@@ -7,7 +7,13 @@ public class Player : MonoBehaviour
     public float playerSpeed;
 
     private Rigidbody2D rig;
-    private Vector2 playerDirection;
+    private Vector2 _playerDirection;
+
+    public Vector2 playerDirection
+    {
+        get { return _playerDirection; }
+        set { _playerDirection = value; }
+    }
 
     private void Start()
     {
