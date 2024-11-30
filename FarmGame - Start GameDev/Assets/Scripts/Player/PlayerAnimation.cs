@@ -27,21 +27,27 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (player.playerDirection.sqrMagnitude > 0) // Se o player estiver se movimentando
         {
-            anim.SetInteger("transition", 1);
-
-            // Verifica a direção horizontal
-            if (player.playerDirection.x > 0)
+            if (player.isPlayerRolling)
             {
-                transform.localScale = new Vector3(1f, 1f, 1f); // Direita
-            }
-            else if (player.playerDirection.x < 0)
+                anim.SetTrigger("isRolling");
+            } else
             {
-                transform.localScale = new Vector3(-1f, 1f, 1f); // Esquerda (espelha no eixo X - o sprite é invertido)
-            }
+                anim.SetInteger("transition", 1);
+            }  
         }
         else
         {
             anim.SetInteger("transition", 0); // Se não estiver andando, ele entra na animação de Idle
+        }
+
+        // Verifica a direção horizontal
+        if (player.playerDirection.x > 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f); // Direita
+        }
+        else if (player.playerDirection.x < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f); // Esquerda (espelha no eixo X - o sprite é invertido)
         }
     }
 
