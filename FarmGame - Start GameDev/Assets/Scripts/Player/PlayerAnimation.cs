@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -17,7 +18,14 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.playerDirection.sqrMagnitude > 0) // Se o player estiver se movimentando
+        onMove();
+        onRun();
+    }
+
+    #region Movement
+    void onMove()
+    {
+        if (player.playerDirection.sqrMagnitude > 0) // Se o player estiver se movimentando
         {
             anim.SetInteger("transition", 1);
 
@@ -30,9 +38,20 @@ public class PlayerAnimation : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1f, 1f, 1f); // Esquerda (espelha no eixo X - o sprite é invertido)
             }
-        } else
+        }
+        else
         {
             anim.SetInteger("transition", 0); // Se não estiver andando, ele entra na animação de Idle
         }
     }
+
+    void onRun()
+    {
+        if(player.isPlayerRunning)
+        {
+            anim.SetInteger("transition", 2);
+        }
+    }
+
+    #endregion
 }
