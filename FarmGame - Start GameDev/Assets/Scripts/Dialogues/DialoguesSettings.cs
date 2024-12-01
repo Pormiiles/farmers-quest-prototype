@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Dialogue", menuName = "New Dialogue/Dialogue")]
@@ -23,9 +24,41 @@ public class Sentences
     public Languages sentence;
 }
 
+[System.Serializable]
 public class Languages
 {
     public string portuguese;
     public string english;
     public string spanish;
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(DialoguesSettings))]
+public class BuilderEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        DialoguesSettings dialSet = (DialoguesSettings)target;
+
+        Languages lang = new Languages();
+        lang.portuguese = dialSet.sentence;
+
+        Sentences sent = new Sentences();
+        sent.profile = dialSet.speakerSprite;
+        sent.sentence = lang;
+
+        if(GUILayout.Button("Create New Dialogue"))
+        {
+            if(dialSet.sentence != "")
+            {
+                dialSet.dialogues.Add(sent);
+
+                dialSet.speakerSprite = null;
+                dialSet.sentence = "";
+            }
+        }
+    }
+}
+#endif
