@@ -22,7 +22,8 @@ public class PlayerAnimation : MonoBehaviour
         onRun();
     }
 
-    #region Movement
+    // Separando o conteúdo em áreas
+    #region Movement 
     void onMove()
     {
         if (player.playerDirection.sqrMagnitude > 0) // Se o player estiver se movimentando

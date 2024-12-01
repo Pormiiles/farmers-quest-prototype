@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Player proprieties
+    // Player attributes
     private float playerInitialSpeed;
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerRunSpeed;
@@ -15,12 +15,14 @@ public class Player : MonoBehaviour
     private Rigidbody2D rig;
     private Vector2 _playerDirection;
 
+    // Player properties
     public Vector2 playerDirection
     {
         get { return _playerDirection; }
         set { _playerDirection = value; }
     }
 
+    // 
     public bool isPlayerRunning
     {
         get { return _isPlayerRunning; }
@@ -78,13 +80,13 @@ public class Player : MonoBehaviour
 
     void onRoll()
     {
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButtonDown(1)) // If mouse´s right button is pressed, the player rolls and its speed is inscreased
         {
             playerSpeed = playerRollSpeed;
             _isPlayerRolling = true;
         } 
         
-        if(Input.GetMouseButtonUp(1)) {
+        if(Input.GetMouseButtonUp(1)) { // If the mouse´s right button stops being pressed, the player stops rolling
             playerSpeed = playerInitialSpeed;
             _isPlayerRolling = false;
         }
