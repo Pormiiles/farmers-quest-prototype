@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerRollSpeed;
     private bool _isPlayerRunning;
     private bool _isPlayerRolling;
+    private bool _isPlayerCutting;
 
     private Rigidbody2D rig;
     private Vector2 _playerDirection;
@@ -35,6 +36,12 @@ public class Player : MonoBehaviour
         set { _isPlayerRolling = value; }
     }
 
+    public bool isPlayerCutting
+    {
+        get { return _isPlayerCutting; }
+        set { _isPlayerCutting = value; }
+    }
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -46,6 +53,7 @@ public class Player : MonoBehaviour
         onInput();
         onRun();
         onRoll();
+        onCutting();
     }
 
     private void FixedUpdate()
@@ -54,6 +62,20 @@ public class Player : MonoBehaviour
     }
 
     #region Movement
+
+    void onCutting()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            isPlayerCutting = true;
+            playerSpeed = 0f;
+        } else if(Input.GetMouseButtonUp(0))
+        {
+            isPlayerCutting = false;
+            playerSpeed = playerInitialSpeed;
+        }
+    }
+
     void onInput()
     {
         _playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));

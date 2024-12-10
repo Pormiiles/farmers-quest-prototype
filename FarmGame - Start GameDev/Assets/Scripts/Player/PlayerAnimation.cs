@@ -24,6 +24,7 @@ public class PlayerAnimation : MonoBehaviour
 
     // Separando o conteúdo em áreas
     #region Movement 
+
     void onMove()
     {
         if (player.playerDirection.sqrMagnitude > 0) // Se o player estiver se movimentando
@@ -49,6 +50,11 @@ public class PlayerAnimation : MonoBehaviour
         else if (player.playerDirection.x < 0)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f); // Esquerda (espelha no eixo X - o sprite é invertido)
+        }
+
+        if(player.isPlayerCutting)
+        {
+            anim.SetInteger("transition", 3);
         }
     }
 
