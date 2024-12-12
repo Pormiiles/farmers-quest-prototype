@@ -9,6 +9,8 @@ public class TreeObject : MonoBehaviour
     [SerializeField] private GameObject woodPrefab; // Prefab da madeira a ser dropada
     [SerializeField] private Transform baseLog;     // Referência ao filho Base Log
 
+    private bool isTreeCut;
+
     // Método chamado quando o Player atinge a árvore
     public void OnHit()
     {
@@ -33,6 +35,8 @@ public class TreeObject : MonoBehaviour
 
             // Ativa a animação da árvore sendo cortada
             anim.SetTrigger("isTreeCut");
+
+            isTreeCut = true;
         }
     }
 
@@ -58,7 +62,7 @@ public class TreeObject : MonoBehaviour
     // Detecta colisão com o machado
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Axe"))
+        if (collision.CompareTag("Axe") && !isTreeCut)
         {
             OnHit();
         }
