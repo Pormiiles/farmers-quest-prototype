@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        // Lógica simples de interface de Inventário
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             HandlingTool = 1;

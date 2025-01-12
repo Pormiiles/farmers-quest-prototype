@@ -33,10 +33,12 @@ public class HUDController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Atualiza as barras de quantidade na UI de itens coletáveis
         waterBarUI.fillAmount = playerItems.waterTotal / playerItems.WaterLimit1;
         carrotBarUI.fillAmount = playerItems.seedCarrotTotal / playerItems.SeedCarrotsLimit;
         woodBarUI.fillAmount = playerItems.woodTotal / playerItems.WoodLimit;
 
+        // Atualiza o valor Alpha da ferramenta que foi selecionado ou não na UI do inventário
         for (int i = 0; i < toolsUI.Count; i++)
         {
             if(i == player.HandlingTool - 1)
