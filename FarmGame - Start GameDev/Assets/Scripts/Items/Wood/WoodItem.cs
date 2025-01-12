@@ -32,7 +32,7 @@ public class WoodItem : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerItems>().TotalWood++;
+            collision.GetComponent<PlayerItems>().woodTotal++;
             Destroy(gameObject);
         }
     }

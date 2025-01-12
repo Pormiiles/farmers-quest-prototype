@@ -12,9 +12,15 @@ public class Player : MonoBehaviour
     private bool _isPlayerRunning;
     private bool _isPlayerRolling;
     private bool _isPlayerCutting;
+    private bool _isPlayerDigging;
+    private bool _isPlayerWatering;
 
     private Rigidbody2D rig;
     private Vector2 _playerDirection;
+
+    private int handlingTool;
+
+    private PlayerItems playerItems;
 
     // Player properties
     public Vector2 playerDirection
@@ -23,7 +29,6 @@ public class Player : MonoBehaviour
         set { _playerDirection = value; }
     }
 
-    // 
     public bool isPlayerRunning
     {
         get { return _isPlayerRunning; }
@@ -42,18 +47,43 @@ public class Player : MonoBehaviour
         set { _isPlayerCutting = value; }
     }
 
+    public bool isPlayerDigging { 
+        get => _isPlayerDigging; 
+        set => _isPlayerDigging = value; 
+    }
+
+    public bool IsPlayerWatering { get => _isPlayerWatering; set => _isPlayerWatering = value; }
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        playerItems = GetComponent<PlayerItems>();
         playerInitialSpeed = playerSpeed; // It storages the player´s initial walk speed when the game starts 
     }
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            handlingTool = 1;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            handlingTool = 2;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            handlingTool = 3;
+        }
+
         onInput();
         onRun();
         onRoll();
         onCutting();
+        onDigging();
+        onWatering();
     }
 
     private void FixedUpdate()
@@ -63,16 +93,59 @@ public class Player : MonoBehaviour
 
     #region Movement
 
+    void onDigging()
+    {
+        if(handlingTool == 1)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                isPlayerDigging = true;
+                playerSpeed = 0f;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                isPlayerDigging = false;
+                playerSpeed = playerInitialSpeed;
+            }
+        }
+    }
+
     void onCutting()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(handlingTool == 2)
         {
-            isPlayerCutting = true;
-            playerSpeed = 0f;
-        } else if(Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonDown(0))
+            {
+                isPlayerCutting = true;
+                playerSpeed = 0f;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                isPlayerCutting = false;
+                playerSpeed = playerInitialSpeed;
+            }
+        }    
+    }
+
+    void onWatering()
+    {
+        if (handlingTool == 3)
         {
-            isPlayerCutting = false;
-            playerSpeed = playerInitialSpeed;
+            if (Input.GetMouseButtonDown(0) && playerItems.waterTotal > 0)
+            {
+                IsPlayerWatering = true;
+                playerSpeed = 0f;
+            }
+            else if (Input.GetMouseButtonUp(0) || playerItems.waterTotal < 0)
+            {
+                IsPlayerWatering = false;
+                playerSpeed = playerInitialSpeed;
+            }
+
+            if(IsPlayerWatering)
+            {
+                playerItems.waterTotal -= 0.02f;
+            }
         }
     }
 

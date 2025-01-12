@@ -8,6 +8,7 @@ public class TreeObject : MonoBehaviour
     [SerializeField] private Animator anim;         // Referência ao Animator
     [SerializeField] private GameObject woodPrefab; // Prefab da madeira a ser dropada
     [SerializeField] private Transform baseLog;     // Referência ao filho Base Log
+    [SerializeField] private ParticleSystem leavesParticles;
 
     private bool isTreeCut;
 
@@ -16,8 +17,9 @@ public class TreeObject : MonoBehaviour
     {
         treeLife--;
         anim.SetTrigger("cuttingTree");
+        leavesParticles.Play();
 
-        if (treeLife <= 0)
+        if(treeLife <= 0)
         {
             // Usa o centro do Base Log para instanciar o WoodItem
             Vector3 baseLogCenter = GetBaseLogCenter();
@@ -43,11 +45,11 @@ public class TreeObject : MonoBehaviour
     // Obtém o centro do Base Log com base no Renderer
     private Vector3 GetBaseLogCenter()
     {
-        if (baseLog != null)
+        if(baseLog != null)
         {
             Renderer baseLogRenderer = baseLog.GetComponent<Renderer>();
 
-            if (baseLogRenderer != null)
+            if(baseLogRenderer != null)
             {
                 return baseLogRenderer.bounds.center; // Centro do sprite do Base Log
             }
@@ -62,7 +64,7 @@ public class TreeObject : MonoBehaviour
     // Detecta colisão com o machado
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Axe") && !isTreeCut)
+        if(collision.CompareTag("Axe") && !isTreeCut)
         {
             OnHit();
         }

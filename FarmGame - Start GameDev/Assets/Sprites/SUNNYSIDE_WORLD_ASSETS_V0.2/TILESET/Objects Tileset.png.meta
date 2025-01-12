@@ -1564,8 +1564,8 @@ TextureImporter:
         serializedVersion: 2
         x: 16
         y: 576
-        width: 32
-        height: 16
+        width: 16
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1684,6 +1684,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Objects Tileset_75
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 854
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a744adffc8cca4eab309e0da17ce35
+      internalID: -1796075989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objects Tileset_76
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 853
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56dcc1e38e2357458833c4d89204c3c
+      internalID: -171252147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objects Tileset_77
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 576
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b280ec81ed36f4a42b1be2a3d7759f2f
+      internalID: 1618442686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1768,6 +1831,9 @@ TextureImporter:
       Objects Tileset_72: 879635017
       Objects Tileset_73: 738055160
       Objects Tileset_74: 18522049
+      Objects Tileset_75: -1796075989
+      Objects Tileset_76: -171252147
+      Objects Tileset_77: 1618442686
       Objects Tileset_8: -907842983
       Objects Tileset_9: 1128455787
   mipmapLimitGroupName: 
