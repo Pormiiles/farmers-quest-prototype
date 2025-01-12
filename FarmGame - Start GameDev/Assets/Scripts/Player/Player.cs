@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
     }
 
     public bool IsPlayerWatering { get => _isPlayerWatering; set => _isPlayerWatering = value; }
+    public int HandlingTool { get => handlingTool; set => handlingTool = value; }
 
     private void Start()
     {
@@ -65,17 +66,17 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            handlingTool = 1;
+            HandlingTool = 1;
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            handlingTool = 2;
+            HandlingTool = 2;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            handlingTool = 3;
+            HandlingTool = 3;
         }
 
         onInput();
@@ -95,7 +96,7 @@ public class Player : MonoBehaviour
 
     void onDigging()
     {
-        if(handlingTool == 1)
+        if(HandlingTool == 1)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -112,7 +113,7 @@ public class Player : MonoBehaviour
 
     void onCutting()
     {
-        if(handlingTool == 2)
+        if(HandlingTool == 2)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -129,7 +130,7 @@ public class Player : MonoBehaviour
 
     void onWatering()
     {
-        if (handlingTool == 3)
+        if (HandlingTool == 3)
         {
             if (Input.GetMouseButtonDown(0) && playerItems.waterTotal > 0)
             {
