@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
             onCutting();
             onDigging();
             onWatering();
-        } 
+        }
     }
 
     private void FixedUpdate()

@@ -33,7 +33,7 @@ public class Casting : MonoBehaviour
 
         if(chanceValueRandom <= castingPercentage)
         {
-            Instantiate(fishPrefab, playerItems.transform.position + new Vector3(UnityEngine.Random.Range(-2.5f, -0.5f), -1f, 0f), Quaternion.identity);
+            Instantiate(fishPrefab, playerItems.transform.position + new Vector3(UnityEngine.Random.Range(-2f, -1f), -0f, 0f), Quaternion.identity);
         }
     }
 

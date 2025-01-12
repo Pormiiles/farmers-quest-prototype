@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5446027298215578262}
   - component: {fileID: 820561617213655594}
   - component: {fileID: 1463127808486381080}
+  - component: {fileID: 8610493934498035596}
   m_Layer: 0
   m_Name: Fish Item
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1031510258, guid: 2d699a3c5e91cc147957835ccf20657d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -120,3 +121,15 @@ CircleCollider2D:
   m_Offset: {x: -0.02581191, y: -0.047323227}
   serializedVersion: 2
   m_Radius: 0.29780316
+--- !u!114 &8610493934498035596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7033267020235229909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac91d2a401e4344f9e38de732cde08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
