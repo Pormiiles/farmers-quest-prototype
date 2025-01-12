@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Player attributes
+    private bool isPlayerSpeedPaused;
+
     private float playerInitialSpeed;
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerRunSpeed;
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
 
     public bool IsPlayerWatering { get => _isPlayerWatering; set => _isPlayerWatering = value; }
     public int HandlingTool { get => handlingTool; set => handlingTool = value; }
+    public bool IsPlayerSpeedPaused { get => isPlayerSpeedPaused; set => isPlayerSpeedPaused = value; }
 
     private void Start()
     {
@@ -64,33 +67,39 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        // Lógica simples de interface de Inventário
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(!isPlayerSpeedPaused)
         {
-            HandlingTool = 1;
-        }
+            // Lógica simples de interface de Inventário
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                HandlingTool = 1;
+            }
 
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            HandlingTool = 2;
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                HandlingTool = 2;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            HandlingTool = 3;
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                HandlingTool = 3;
+            }
 
-        onInput();
-        onRun();
-        onRoll();
-        onCutting();
-        onDigging();
-        onWatering();
+            onInput();
+            onRun();
+            onRoll();
+            onCutting();
+            onDigging();
+            onWatering();
+        } 
     }
 
     private void FixedUpdate()
     {
-        onMove();  
+        if(!isPlayerSpeedPaused)
+        {
+            onMove();
+        }
     }
 
     #region Movement

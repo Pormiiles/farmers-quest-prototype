@@ -7,12 +7,14 @@ public class PlayerAnimation : MonoBehaviour
 {
     private Player player;
     private Animator anim;
+    private Casting castingScript;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Player>();
         anim = GetComponent<Animator>();
+        castingScript = FindObjectOfType<Casting>();
     }
 
     // Update is called once per frame
@@ -74,6 +76,18 @@ public class PlayerAnimation : MonoBehaviour
         {
             anim.SetInteger("transition", 2);
         }
+    }
+
+    public void onCastingStart()
+    {
+        anim.SetTrigger("isCasting");
+        player.IsPlayerSpeedPaused = true;
+    }
+
+    public void onCastingEnd()
+    {
+        castingScript.onCasting();
+        player.IsPlayerSpeedPaused = false;
     }
 
     #endregion

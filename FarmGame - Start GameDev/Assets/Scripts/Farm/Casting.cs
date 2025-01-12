@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class Casting : MonoBehaviour
 {
-    private Boolean playerDetected;
-    private PlayerItems player;
+    private bool playerDetected;
+    private PlayerItems playerItems;
+    private PlayerAnimation playerAnim;
     [SerializeField] private int castingPercentage; // Chance de pescar um peixe
+    public GameObject fishPrefab; 
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerItems>();
+        playerItems = FindObjectOfType<PlayerItems>();
+        playerAnim = playerItems.GetComponent<PlayerAnimation>();
     }
 
     // Update is called once per frame
@@ -20,20 +23,17 @@ public class Casting : MonoBehaviour
     {
         if (playerDetected && Input.GetKeyDown(KeyCode.E))
         {
-            onCasting();
+            playerAnim.onCastingStart();
         }
     }
 
-    void onCasting()
+    public void onCasting()
     {
         int chanceValueRandom = UnityEngine.Random.Range(1, 100);
 
         if(chanceValueRandom <= castingPercentage)
         {
-            Debug.Log("pescou!");
-        } else
-        {
-            Debug.Log("não pescou!");
+            Instantiate(fishPrefab, playerItems.transform.position + new Vector3(UnityEngine.Random.Range(-2.5f, -0.5f), -1f, 0f), Quaternion.identity);
         }
     }
 
