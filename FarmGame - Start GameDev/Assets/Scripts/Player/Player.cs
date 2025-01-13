@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     private Rigidbody2D rig;
     private Vector2 _playerDirection;
 
+    private bool canRoll = true;
+    [SerializeField] private float rollCooldown = 1.5f;
+
     private int handlingTool;
 
     private PlayerItems playerItems;
@@ -167,7 +170,11 @@ public class Player : MonoBehaviour
 
     void onMove()
     {
-        rig.MovePosition(rig.position + playerDirection * playerSpeed * Time.fixedDeltaTime);
+        // Normaliza a direção para evitar que a velocidade aumente na diagonal
+        Vector2 normalizedDirection = _playerDirection.normalized;
+
+        // Move o player com a direção normalizada
+        rig.MovePosition(rig.position + normalizedDirection * playerSpeed * Time.fixedDeltaTime);
     }
 
     void onRun()
@@ -186,16 +193,32 @@ public class Player : MonoBehaviour
 
     void onRoll()
     {
-        if(Input.GetMouseButtonDown(1)) // If mouse´s right button is pressed, the player rolls and its speed is inscreased
+        if (Input.GetMouseButtonDown(1) && canRoll) // Se o botão direito do mouse for pressionado e o player puder rolar
         {
-            playerSpeed = playerRollSpeed;
-            _isPlayerRolling = true;
-        } 
-        
-        if(Input.GetMouseButtonUp(1)) { // If the mouse´s right button stops being pressed, the player stops rolling
-            playerSpeed = playerInitialSpeed;
-            _isPlayerRolling = false;
+            _isPlayerRolling = true; // Ativa a rolagem
+            playerSpeed = playerRollSpeed; // Altera a velocidade para a de rolagem
+            canRoll = false; // Bloqueia a rolagem até que o cooldown termine
+
+            StartCoroutine(EndRoll()); // Finaliza a rolagem após o tempo da animação
         }
     }
+
+    // Método para finalizar a rolagem após um tempo fixo
+    private IEnumerator EndRoll()
+    {
+        yield return new WaitForSeconds(0.1f); // Duração da animação de rolagem (ajuste conforme necessário)
+        _isPlayerRolling = false; // Finaliza a rolagem
+        playerSpeed = playerInitialSpeed; // Restaura a velocidade inicial do player
+
+        StartCoroutine(RollCooldown()); // Inicia o cooldown para liberar a rolagem novamente
+    }
+
+    // Método para controlar o cooldown
+    private IEnumerator RollCooldown()
+    {
+        yield return new WaitForSeconds(rollCooldown); // Tempo do cooldown
+        canRoll = true; // Permite que o player role novamente
+    }
+
     #endregion
 }

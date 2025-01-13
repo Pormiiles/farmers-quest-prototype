@@ -90,5 +90,14 @@ public class PlayerAnimation : MonoBehaviour
         player.IsPlayerSpeedPaused = false;
     }
 
+    public void onBuildingStart()
+    {
+        anim.SetBool("isHammering", true);
+    }
+
+    public void onBuildingEnd()
+    {
+        anim.SetBool("isHammering", false);
+    }
     #endregion
 }
