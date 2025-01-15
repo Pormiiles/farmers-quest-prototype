@@ -8,6 +8,9 @@ public class PlotSlot : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite hole;
     [SerializeField] private Sprite seedCarrot;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip holeSFX;
+    [SerializeField] private AudioClip carrotPickedUp;
 
     [Header("Settings")]
     [SerializeField] private int digAmount;
@@ -16,6 +19,8 @@ public class PlotSlot : MonoBehaviour
     [SerializeField] private float plotWaterAmount;
     private float currentWaterAmount;
     private bool wasHoleDug;
+    private bool wasCarrotPickedUp;
+    private bool isPlayerColliding;
 
     private PlayerItems playerItems;
 
@@ -35,16 +40,20 @@ public class PlotSlot : MonoBehaviour
                 currentWaterAmount += 0.02f;
             }
 
-            if (currentWaterAmount >= plotWaterAmount)
+            if (currentWaterAmount >= plotWaterAmount && !wasCarrotPickedUp)
             {
                 spriteRenderer.sprite = seedCarrot;
+                audioSource.PlayOneShot(holeSFX);
+                wasCarrotPickedUp = true;
+            }
 
-                if(Input.GetKeyDown(KeyCode.E))
-                {
-                    spriteRenderer.sprite = hole;
-                    playerItems.seedCarrotTotal++;
-                    currentWaterAmount = 0f;
-                }
+            if (Input.GetKeyDown(KeyCode.E) && wasCarrotPickedUp && isPlayerColliding)
+            {
+                spriteRenderer.sprite = hole;
+                audioSource.PlayOneShot(holeSFX);
+                playerItems.seedCarrotTotal++;
+                currentWaterAmount = 0f;
+                wasCarrotPickedUp = false;
             }
         }
         
@@ -72,6 +81,11 @@ public class PlotSlot : MonoBehaviour
         {
             detecting = true;
         }
+
+        if(collision.CompareTag("Player"))
+        {
+            isPlayerColliding = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -79,6 +93,11 @@ public class PlotSlot : MonoBehaviour
         if(collision.CompareTag("Watering"))
         {
             detecting = false;
+        }
+
+        if (collision.CompareTag("Player"))
+        {
+            isPlayerColliding = false;
         }
     }
 }

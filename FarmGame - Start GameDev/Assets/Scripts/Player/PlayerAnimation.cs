@@ -72,7 +72,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void onRun()
     {
-        if(player.isPlayerRunning)
+        if(player.isPlayerRunning && player.playerDirection.sqrMagnitude > 0)
         {
             anim.SetInteger("transition", 2);
         }
