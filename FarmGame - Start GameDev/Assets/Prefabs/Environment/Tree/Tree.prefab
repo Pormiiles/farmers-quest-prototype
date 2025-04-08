@@ -5111,7 +5111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1e4b6acecaf9643bb22f4d4fae0df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeLife: 7
+  treeLife: 4
   anim: {fileID: 5116485304995324139}
   woodPrefab: {fileID: 2043641130973721616, guid: 76fadc34221969448838e94a38f3cf2e, type: 3}
   baseLog: {fileID: 8813116959135783796}

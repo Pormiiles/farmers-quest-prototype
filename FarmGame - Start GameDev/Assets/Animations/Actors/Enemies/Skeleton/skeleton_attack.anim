@@ -26,13 +26,13 @@ AnimationClip:
       value: {fileID: -1571468205, guid: ebf8bd96b2f272e4a84505a753c039cc, type: 3}
     - time: 0.16666667
       value: {fileID: 135907514, guid: ebf8bd96b2f272e4a84505a753c039cc, type: 3}
-    - time: 0.25
+    - time: 0.16666667
       value: {fileID: 1813475122, guid: ebf8bd96b2f272e4a84505a753c039cc, type: 3}
-    - time: 0.33333334
+    - time: 0.25
       value: {fileID: 435118968, guid: ebf8bd96b2f272e4a84505a753c039cc, type: 3}
-    - time: 0.41666666
+    - time: 0.33333334
       value: {fileID: -746065164, guid: ebf8bd96b2f272e4a84505a753c039cc, type: 3}
-    - time: 0.5
+    - time: 0.41666666
       value: {fileID: -30513569, guid: ebf8bd96b2f272e4a84505a753c039cc, type: 3}
     attribute: m_Sprite
     path: 
@@ -68,7 +68,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -87,4 +87,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.25
+    functionName: onSkeletonAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

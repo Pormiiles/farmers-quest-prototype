@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private bool _isPlayerCutting;
     private bool _isPlayerDigging;
     private bool _isPlayerWatering;
+    private bool _isPlayerAttacking;
 
     private Rigidbody2D rig;
     private Vector2 _playerDirection;
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     private bool canRoll = true;
     [SerializeField] private float rollCooldown = 1.5f;
 
-    private int handlingTool;
+    [SerializeField] private int handlingTool;
 
     private PlayerItems playerItems;
 
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
     public bool IsPlayerWatering { get => _isPlayerWatering; set => _isPlayerWatering = value; }
     public int HandlingTool { get => handlingTool; set => handlingTool = value; }
     public bool IsPlayerSpeedPaused { get => isPlayerSpeedPaused; set => isPlayerSpeedPaused = value; }
+    public bool IsPlayerAttacking { get => _isPlayerAttacking; set => _isPlayerAttacking = value; }
 
     private void Start()
     {
@@ -88,12 +90,18 @@ public class Player : MonoBehaviour
                 HandlingTool = 3;
             }
 
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                HandlingTool = 4;
+            }
+
             onInput();
             onRun();
             onRoll();
             onCutting();
             onDigging();
             onWatering();
+            onSwordAttack();
         }
     }
 
@@ -106,6 +114,27 @@ public class Player : MonoBehaviour
     }
 
     #region Movement
+
+    void onSwordAttack()
+    {
+        if (HandlingTool == 4)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                IsPlayerAttacking = true;
+                playerSpeed = 0f;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                IsPlayerAttacking = false;
+                playerSpeed = playerInitialSpeed;
+            }
+        }
+        else
+        {
+            IsPlayerAttacking = false;
+        }
+    }
 
     void onDigging()
     {
