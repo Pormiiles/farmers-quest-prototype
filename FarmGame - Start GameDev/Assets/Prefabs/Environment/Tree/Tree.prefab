@@ -114,7 +114,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.03230524, y: 0.017730951}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 1064781637447375612}
   - component: {fileID: 8924017701707592837}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Leaves Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5087,7 +5087,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5098,7 +5098,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4956389594719230234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5115,7 +5115,7 @@ MonoBehaviour:
   anim: {fileID: 5116485304995324139}
   woodPrefab: {fileID: 2043641130973721616, guid: 76fadc34221969448838e94a38f3cf2e, type: 3}
   baseLog: {fileID: 8813116959135783796}
-  leavesParticles: {fileID: 0}
+  leavesParticles: {fileID: 1064781637447375612}
 --- !u!61 &6278502636293584319
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5145,7 +5145,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
