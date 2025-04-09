@@ -9,12 +9,13 @@ public class Skeleton : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     private Transform player;
     [SerializeField] private SkeletonAnimation anim;
+    [SerializeField] public LayerMask enemyLayer;
 
     [SerializeField] public float totalHealth;
     public float currentHealth;
     public Image healthBar;
     public bool isDead;
-
+    
     void Start()
     {
         currentHealth = totalHealth;
@@ -60,6 +61,21 @@ public class Skeleton : MonoBehaviour
             else // Vira o sprite do esqueleto em 180° (direção contrária, esquerda)
             {
                 transform.eulerAngles = new Vector2(0, 180);
+            }
+        }
+
+        AvoidOtherEnemies();
+    }
+
+    void AvoidOtherEnemies()
+    {
+        Collider2D[] others = Physics2D.OverlapCircleAll(transform.position, 0.5f, enemyLayer);
+        foreach (Collider2D other in others)
+        {
+            if (other.gameObject != this.gameObject)
+            {
+                Vector2 pushDir = (transform.position - other.transform.position).normalized;
+                transform.position += (Vector3)(pushDir * Time.deltaTime);
             }
         }
     }
