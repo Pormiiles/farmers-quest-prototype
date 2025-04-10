@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea6642dc982726478ba0e5ab02a71e3, type: 3}
+  m_Name: Starting Dialogue
+  m_EditorClassIdentifier: 
+  actor: {fileID: 7382860226980953706, guid: 6ee1fe69f725e7d4785c93a611bff7f5, type: 3}
+  speakerSprite: {fileID: 0}
+  sentence: 
+  dialogues:
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 3c82267ee8e6f6441bb5d342fff3907a, type: 3}
+    sentence:
+      portuguese: "Oh... que bom que voc\xEA chegou! Por favor, me ajude! Alguns
+        monstros destru\xEDram a minha casa. A prop\xF3sito, me chamo Layla!"
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: ea9c53f2c32d5254d945335cae825b4e, type: 3}
+    sentence:
+      portuguese: Meu Deus, que terror! Mas fique calma. Como posso te ajudar, Layla?
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 3c82267ee8e6f6441bb5d342fff3907a, type: 3}
+    sentence:
+      portuguese: "\xC9 muita gentileza sua, fazendeiro. Eu vi os monstros indo naquela
+        entrada, para as cavernas."
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: ea9c53f2c32d5254d945335cae825b4e, type: 3}
+    sentence:
+      portuguese: "Entraram nas cavernas?! OK, preciso agir r\xE1pido! Como posso
+        entrar l\xE1?"
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 3c82267ee8e6f6441bb5d342fff3907a, type: 3}
+    sentence:
+      portuguese: "Para entrar nas cavernas, voc\xEA vai precisar pescar 5 peixes
+        e colher 10 cenouras. Fique a vontade para plantar no meu terreno logo ali
+        ao lado!"
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 3c82267ee8e6f6441bb5d342fff3907a, type: 3}
+    sentence:
+      portuguese: "Ah... e mais uma coisa. Tome muito cuidado, ouvi falar que as
+        cavernas \xE9 um lugar muito perigoso. Os monstros atacam em ondas!"
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: ea9c53f2c32d5254d945335cae825b4e, type: 3}
+    sentence:
+      portuguese: "Entendi! Tomarei cuidado. Voltarei assim que acabar e voc\xEA
+        ter\xE1 sua casa de volta, Layla! :)"
+      english: 
+      spanish: 

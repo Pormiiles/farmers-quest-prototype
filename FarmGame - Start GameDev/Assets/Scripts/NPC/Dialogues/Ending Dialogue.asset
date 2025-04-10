@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea6642dc982726478ba0e5ab02a71e3, type: 3}
+  m_Name: Ending Dialogue
+  m_EditorClassIdentifier: 
+  actor: {fileID: 0}
+  speakerSprite: {fileID: 0}
+  sentence: 
+  dialogues:
+  - actorName: Layla
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "Voc\xEA conseguiu? Derrotou todos os monstros? Inacredit\xE1vel!"
+      english: 
+      spanish: 
+  - actorName: "Her\xF3i"
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "N\xE3o foi f\xE1cil, mas finalmente voc\xEA est\xE1 livre de perigos.
+        Vamos reconstruir sua casa!"
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "Muito obrigada, fazendeiro! Voc\xEA foi muito gentil. <3"
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "Ah... e se voc\xEA precisar, colete 10 madeiras para reconstruir
+        minha casa, naquele espa\xE7o de terra bem ao lado do lago de peixes."
+      english: 
+      spanish: 
