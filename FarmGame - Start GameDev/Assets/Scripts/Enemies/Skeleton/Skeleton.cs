@@ -1,28 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using System;
 
 public class Skeleton : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    private Transform player;
+    private Transform playerPosition;
+    private Player player;
     [SerializeField] private SkeletonAnimation anim;
     [SerializeField] public LayerMask enemyLayer;
 
-    [SerializeField] public float totalHealth;
+    [SerializeField] public float totalHealth = 3;
     public float currentHealth;
     public Image healthBar;
     public bool isDead;
-    
+
+    public float damage = 5f;
+
+    public event Action onDeath;
+
     void Start()
     {
         currentHealth = totalHealth;
+        playerPosition = FindObjectOfType<Player>().transform;
+        anim = GetComponentInChildren<SkeletonAnimation>();
+        player = GetComponent<Player>();
 
-        player = FindObjectOfType<Player>().transform;
-
-        // Desativa comportamentos 3D desnecessários
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.updatePosition = false;
@@ -30,38 +34,28 @@ public class Skeleton : MonoBehaviour
 
     void Update()
     {
-        if(!isDead)
+        if (!isDead)
         {
-            agent.SetDestination(player.position);
+            agent.SetDestination(playerPosition.position);
 
-            // Move apenas se estiver fora da distância mínima
             if (Vector3.Distance(transform.position, agent.destination) > agent.stoppingDistance)
             {
                 Vector3 direction = (agent.steeringTarget - transform.position).normalized;
                 transform.position += direction * agent.speed * Time.deltaTime;
             }
 
-            if (Vector2.Distance(transform.position, player.transform.position) <= agent.stoppingDistance)
+            if (Vector2.Distance(transform.position, playerPosition.transform.position) <= agent.stoppingDistance)
             {
-                // Skeleton chegou no limite próximo ao Player
                 anim.PlayAnim(2);
             }
             else
             {
-                // Skeleton anda em direção ao player
                 anim.PlayAnim(1);
             }
 
-            float posX = player.transform.position.x - transform.position.x;
+            float posX = playerPosition.transform.position.x - transform.position.x;
 
-            if (posX > 0) // Mantém o sprite do esqueleto na direção normal (direita)
-            {
-                transform.eulerAngles = new Vector2(0, 0);
-            }
-            else // Vira o sprite do esqueleto em 180° (direção contrária, esquerda)
-            {
-                transform.eulerAngles = new Vector2(0, 180);
-            }
+            transform.eulerAngles = (posX > 0) ? new Vector2(0, 0) : new Vector2(0, 180);
         }
 
         AvoidOtherEnemies();
@@ -77,6 +71,47 @@ public class Skeleton : MonoBehaviour
                 Vector2 pushDir = (transform.position - other.transform.position).normalized;
                 transform.position += (Vector3)(pushDir * Time.deltaTime);
             }
+        }
+    }
+
+    public void TakeDamage(float amount) // Esqueleto recebe dano
+    {
+        if (isDead) return;
+
+        currentHealth -= amount;
+
+        if (healthBar != null)
+            healthBar.fillAmount = currentHealth / totalHealth;
+
+        if (anim != null)
+            anim.PlayHit(); // Toca animação de hit
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        if (isDead) return;
+
+        isDead = true;
+
+        Debug.Log("Skeleton morreu");
+
+        anim.PlayDeath(); // Toca a animação de morte
+
+        onDeath?.Invoke(); // Notifica o WaveManager
+
+        Destroy(gameObject, 1f); // Destroi após 1s
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            player.TakeDamage(damage);
         }
     }
 }

@@ -474,6 +474,8 @@ MonoBehaviour:
   playerRollSpeed: 25
   rollCooldown: 1.5
   handlingTool: 0
+  totalPlayerHealth: 50
+  currentPlayerHealth: 0
 --- !u!82 &2748343800951748816
 AudioSource:
   m_ObjectHideFlags: 0

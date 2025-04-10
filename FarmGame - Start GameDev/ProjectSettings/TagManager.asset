@@ -8,6 +8,7 @@ TagManager:
   - Wood
   - Dig
   - Watering
+  - Enemy
   layers:
   - Default
   - TransparentFX

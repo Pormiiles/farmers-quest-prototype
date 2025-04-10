@@ -49,18 +49,21 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    // Separando o conteúdo em áreas
     #region Movement 
-
-    void onAttackEnemy() // Evento no player_attack - Player ataca e provoca o hit no esqueleto
+    void onAttackEnemy()
     {
         Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, enemyLayer);
 
         if (hit != null)
         {
-            hit.GetComponentInChildren<SkeletonAnimation>().onSkeletonHit();
+            Skeleton skeleton = hit.GetComponentInParent<Skeleton>();
+            if (skeleton != null)
+            {
+                skeleton.TakeDamage(1f); // Aplica 1 ponto de dano
+            }
         }
     }
+
 
     void onSwordAttack()
     {

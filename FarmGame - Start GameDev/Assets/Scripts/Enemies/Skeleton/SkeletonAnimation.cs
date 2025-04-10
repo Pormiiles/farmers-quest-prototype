@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkeletonAnimation : MonoBehaviour
@@ -10,9 +8,9 @@ public class SkeletonAnimation : MonoBehaviour
 
     private Animator anim;
     private PlayerAnimation playerAnim;
+    private Player player;
     private Skeleton skeleton;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -25,35 +23,24 @@ public class SkeletonAnimation : MonoBehaviour
         anim.SetInteger("transition", value);
     }
 
-    public void onSkeletonAttack() // Ataque do esqueleto
+    public void PlayHit() // Toca a animação do esqueleto recebendo dano
     {
-        if(!skeleton.isDead)
-        {
-            Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, playerLayer);
-
-            if (hit != null)
-            {
-                // Skeleton detecta e começa a bater no player (animação do player tomando hit)
-                playerAnim.onHit();
-            }
-        }  
+        anim.SetTrigger("hit");
     }
 
-    public void onSkeletonHit() // Hit sofrido pelo esqueleto
+    public void PlayDeath() // Toca a animação do esqueleto morrendo
     {
-        if(skeleton.currentHealth <= 0)
-        {
-            skeleton.isDead = true;
-            anim.SetTrigger("isDead");
+        anim.ResetTrigger("hit");
+        anim.SetTrigger("isDead");
+    }
 
-            Destroy(skeleton.gameObject, 1f);
-        } else
+    public void onSkeletonAttack()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, playerLayer);
+        if (hit != null)
         {
-            anim.SetTrigger("hit");
-            skeleton.currentHealth--;
-
-            // Fill Amount do LifeBar recebe a vida atual dividida pela vida total do inimigo
-            skeleton.healthBar.fillAmount = skeleton.currentHealth / skeleton.totalHealth;
+            playerAnim.onHit();
+            hit.GetComponent<Player>().TakeDamage(skeleton.damage);
         }
     }
 

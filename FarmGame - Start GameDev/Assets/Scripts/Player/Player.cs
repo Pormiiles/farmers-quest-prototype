@@ -28,6 +28,12 @@ public class Player : MonoBehaviour
 
     private PlayerItems playerItems;
 
+    public float totalPlayerHealth;
+    public float currentPlayerHealth;
+    private bool isPlayerDead;
+
+    private DungeonUI dungeonUI;
+
     // Player properties
     public Vector2 playerDirection
     {
@@ -65,9 +71,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        currentPlayerHealth = totalPlayerHealth;
         rig = GetComponent<Rigidbody2D>();
         playerItems = GetComponent<PlayerItems>();
         playerInitialSpeed = playerSpeed; // It storages the player´s initial walk speed when the game starts 
+        dungeonUI = FindObjectOfType<DungeonUI>();
     }
 
     private void Update()
@@ -115,7 +123,7 @@ public class Player : MonoBehaviour
 
     #region Movement
 
-    void onSwordAttack()
+    void onSwordAttack() // Ataque do player
     {
         if (HandlingTool == 4)
         {
@@ -133,6 +141,22 @@ public class Player : MonoBehaviour
         else
         {
             IsPlayerAttacking = false;
+        }
+    }
+
+    public void TakeDamage(float amount)
+    {
+        if (isPlayerDead) return;
+
+        currentPlayerHealth -= amount;
+
+        Debug.Log("Player levou dano! Vida atual: " + currentPlayerHealth);
+
+        if (currentPlayerHealth <= 0)
+        {
+            isPlayerDead = true;
+            Time.timeScale = 0f;
+            dungeonUI.gameOverPanel.SetActive(true);
         }
     }
 
@@ -259,4 +283,16 @@ public class Player : MonoBehaviour
     }
 
     #endregion
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            Skeleton skeleton = collision.GetComponent<Skeleton>();
+            if (skeleton != null)
+            {
+                skeleton.TakeDamage(1f);
+            }
+        }
+    }
 }
