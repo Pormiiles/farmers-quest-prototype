@@ -9,7 +9,7 @@ public class SceneManagement : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("TesteAudio");
+            SceneManager.LoadScene("SampleScene");
         }
     }
 }

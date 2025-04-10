@@ -1166,8 +1166,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0005187988}
-  m_SizeDelta: {x: 800, y: 404.48}
+  m_AnchoredPosition: {x: -0.00066948, y: -0.39965}
+  m_SizeDelta: {x: 716.52, y: 403.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &362444171
 GameObject:
@@ -6234,8 +6234,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 267.68713, y: 152.96051}
-  m_SizeDelta: {x: 287.5439, y: 88.9991}
+  m_AnchoredPosition: {x: 224.04108, y: 174.4675}
+  m_SizeDelta: {x: 240.7648, y: 72.0543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &744912063
 GameObject:
@@ -6433,8 +6433,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -279.34827, y: 152.96051}
-  m_SizeDelta: {x: 287.5439, y: 88.9991}
+  m_AnchoredPosition: {x: -234, y: 174.4675}
+  m_SizeDelta: {x: 240.7648, y: 72.0543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &833424347
 GameObject:
@@ -8733,7 +8733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -9046,8 +9046,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030518, y: 0}
-  m_SizeDelta: {x: 894, y: 473.2}
+  m_AnchoredPosition: {x: -0.0000076294, y: 0.000017643}
+  m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1257892087
 MonoBehaviour:
@@ -9174,7 +9174,7 @@ Transform:
   m_GameObject: {fileID: 1279353106}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3835541, y: -15.699001, z: -10}
+  m_LocalPosition: {x: 0.38356078, y: -15.700851, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15365,8 +15365,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 152.96051}
-  m_SizeDelta: {x: 44.9308, y: 45.2665}
+  m_AnchoredPosition: {x: -0.09740031, y: 174.4675}
+  m_SizeDelta: {x: 37.6213, y: 36.648}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1382900828
 PrefabInstance:
@@ -15634,7 +15634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -318.3, y: 39}
+  m_AnchoredPosition: {x: -280, y: 64}
   m_SizeDelta: {x: 200, y: 104.399994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1428016810
@@ -16132,8 +16132,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.5924529, g: 0.33945176, b: 0.09725167, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.8037735, g: 0.46252483, b: 0.13194014, a: 1}
+    m_SelectedColor: {r: 0.8039216, g: 0.4627451, b: 0.13333334, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -33555,16 +33555,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 8, y: -18, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 21
-      m_TileSpriteIndex: 21
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 9, y: -18, z: 0}
     second:
       serializedVersion: 2
@@ -33640,16 +33630,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 21
       m_TileSpriteIndex: 21
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 8, y: -16, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 23
-      m_TileSpriteIndex: 23
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34239,11 +34219,11 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 11
+  - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: fab29bcc7f222d141914fbeaefb5e63f, type: 2}
   - m_RefCount: 19
     m_Data: {fileID: 11400000, guid: 5fa198b2c0190b24e918ac0c7ee69d4c, type: 2}
-  - m_RefCount: 28
+  - m_RefCount: 27
     m_Data: {fileID: 11400000, guid: 434358dbd19490748a46746336d0fec4, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -34326,11 +34306,11 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 11
+  - m_RefCount: 10
     m_Data: {fileID: -1923233618, guid: 2d699a3c5e91cc147957835ccf20657d, type: 3}
   - m_RefCount: 19
     m_Data: {fileID: 29101875, guid: 2d699a3c5e91cc147957835ccf20657d, type: 3}
-  - m_RefCount: 28
+  - m_RefCount: 27
     m_Data: {fileID: -989797432, guid: 2d699a3c5e91cc147957835ccf20657d, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -34371,7 +34351,7 @@ Tilemap:
   - m_RefCount: 11
     m_Data: {fileID: 668882400, guid: 2d699a3c5e91cc147957835ccf20657d, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 69
+  - m_RefCount: 67
     m_Data:
       e00: 1
       e01: 0
@@ -34390,7 +34370,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 69
+  - m_RefCount: 67
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -45105,8 +45085,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4292796126
+  m_fontColor: {r: 0.87169814, g: 0.87169814, b: 0.87169814, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

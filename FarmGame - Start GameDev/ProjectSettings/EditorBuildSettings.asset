@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Cave.unity
+    guid: 72bfe87bc8fa9db4db85021a6e5b72c7
+  - enabled: 1
     path: Assets/Scenes/TesteAudio.unity
     guid: f9669e99fd1c3bb479f748075d162704
   m_configObjects: {}
