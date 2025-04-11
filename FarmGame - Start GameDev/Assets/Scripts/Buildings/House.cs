@@ -1,29 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class House : MonoBehaviour
 {
     private bool isPlayerDetected;
-    private bool hasBegunBuilding;
-    private float timeCount;
+    private bool isBuilding;
 
-    [Header("Amounts")]
-    [SerializeField] private float timeAmount;
+    [Header("Configurações da Construção")]
+    [SerializeField] private float buildTime = 3f;
+    [SerializeField] private int woodRequired = 10;
     [SerializeField] private Color startColor;
     [SerializeField] private Color endColor;
-    [SerializeField] private int woodAmount;
 
-    [Header("Components")]
-    [SerializeField] private SpriteRenderer houseSprite;
+    [Header("Referências")]
+    [SerializeField] private GameObject houseSprite;
     [SerializeField] private GameObject houseCollider;
-    [SerializeField] private Transform pointPosition;
+    [SerializeField] private Transform playerBuildPoint;
 
     private Player player;
     private PlayerAnimation playerAnim;
     private PlayerItems playerItems;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -31,50 +28,52 @@ public class House : MonoBehaviour
         playerItems = player.GetComponent<PlayerItems>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(isPlayerDetected && Input.GetKeyDown(KeyCode.E) && playerItems.woodTotal >= woodAmount)
+        if (isPlayerDetected && !isBuilding &&
+            Input.GetKeyDown(KeyCode.E) &&
+            GameManager.instance.estadoLayla == EstadoLayla.DepoisDaCaverna &&
+            playerItems.woodTotal >= woodRequired)
         {
-            // Come�a a anima��o de construir a casa
-            hasBegunBuilding = true;
-            houseSprite.color = startColor;
-            playerAnim.onBuildingStart();
-            player.transform.position = pointPosition.position;
-            player.IsPlayerSpeedPaused = true;
-            houseSprite.gameObject.SetActive(true);
-            playerItems.woodTotal -= woodAmount;
+            StartCoroutine(BuildHouse());
         }
+    }
 
-        if(hasBegunBuilding)
-        {
-            timeCount += Time.deltaTime;
+    IEnumerator BuildHouse()
+    {
+        isBuilding = true;
 
-            if(timeCount >= timeAmount)
-            {
-                // Finaliza a constru��o da casa
-                houseSprite.color = endColor;
-                playerAnim.onBuildingEnd();
-                player.IsPlayerSpeedPaused = false;
-                houseCollider.SetActive(true);
-            }
-        }
+        // Preparativos
+        player.transform.position = playerBuildPoint.position;
+        player.IsPlayerSpeedPaused = true;
+        playerAnim.onBuildingStart();
+        houseSprite.SetActive(true);
+        houseSprite.GetComponent<SpriteRenderer>().color = startColor;
+        playerItems.woodTotal -= woodRequired;
+
+        // Tempo de construção
+        yield return new WaitForSeconds(buildTime);
+
+        // Finaliza construção
+        houseSprite.GetComponent<SpriteRenderer>().color = endColor;
+        playerAnim.onBuildingEnd();
+        player.IsPlayerSpeedPaused = false;
+        houseCollider.SetActive(true);
+
+        // Atualiza estado da Layla
+        GameManager.instance.estadoLayla = EstadoLayla.DepoisDeConstruirCasa;
+        Debug.Log("Casa da Layla construída!");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-        {
+        if (collision.CompareTag("Player"))
             isPlayerDetected = true;
-        }
-        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-        {
+        if (collision.CompareTag("Player"))
             isPlayerDetected = false;
-        }
     }
 }
