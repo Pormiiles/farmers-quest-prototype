@@ -282,6 +282,31 @@ public class Player : MonoBehaviour
         canRoll = true; // Permite que o player role novamente
     }
 
+    public void DisablePlayerControls()
+    {
+        IsPlayerSpeedPaused = true;
+
+        // Cancela qualquer ação ativa
+        isPlayerDigging = false;
+        isPlayerCutting = false;
+        IsPlayerWatering = false;
+        IsPlayerAttacking = false;
+        _isPlayerRolling = false;
+        _isPlayerRunning = false;
+
+        // Zera movimento do player imediatamente
+        _playerDirection = Vector2.zero;
+        playerSpeed = 0f;
+    }
+
+    public void EnablePlayerControls()
+    {
+        IsPlayerSpeedPaused = false;
+
+        // Restaura a velocidade normal
+        playerSpeed = playerInitialSpeed;
+    }
+
     #endregion
 
     void OnTriggerEnter2D(Collider2D collision)
