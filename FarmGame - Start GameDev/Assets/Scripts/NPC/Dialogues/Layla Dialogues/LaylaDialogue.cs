@@ -1,33 +1,53 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum EstadoLayla
+{
+    AntesDaCaverna,
+    DepoisDaCaverna,
+    DepoisDeConstruirCasa
+}
 
 public class LaylaDialogue : MonoBehaviour
 {
     public float dialogueRange;
     public LayerMask playerLayer;
 
-    public DialoguesSettings dialogue;
+    [Header("Referência para cada estado da Layla")]
+    public DialoguesSettings antesDaCaverna;
+    public DialoguesSettings depoisDaCaverna;
+    public DialoguesSettings depoisDeConstruirCasa;
 
     bool playerHit;
+    private List<string> sentences = new List<string>();
 
-    private List<string> sentences = new List<string>(); 
+    // Novo: armazena o estado anterior para detectar mudanças
+    private EstadoLayla estadoAnterior;
 
-    // Start is called before the first frame update
     void Start()
     {
+        estadoAnterior = GameManager.instance.estadoLayla;
         GetSpeechText();
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && playerHit)
+        // Debug para acompanhar o estado da Layla
+        Debug.Log("Estado da Layla: " + GameManager.instance.estadoLayla);
+
+        // Atualiza os diálogos se o estado mudou
+        if (GameManager.instance.estadoLayla != estadoAnterior)
+        {
+            estadoAnterior = GameManager.instance.estadoLayla;
+            GetSpeechText();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && playerHit)
         {
             DialogueController.instance.Speech(sentences.ToArray());
-        }    
+        }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         ShowDialogue();
@@ -35,39 +55,45 @@ public class LaylaDialogue : MonoBehaviour
 
     void GetSpeechText()
     {
-        for(int i = 0; i < dialogue.dialogues.Count; i++)
+        sentences.Clear(); // Limpa antes de carregar
+
+        DialoguesSettings dialogoAtual = antesDaCaverna;
+
+        switch (GameManager.instance.estadoLayla)
         {
-            switch(DialogueController.instance.language)
+            case EstadoLayla.DepoisDaCaverna:
+                dialogoAtual = depoisDaCaverna;
+                break;
+
+            case EstadoLayla.DepoisDeConstruirCasa:
+                dialogoAtual = depoisDeConstruirCasa;
+                break;
+        }
+
+        for (int i = 0; i < dialogoAtual.dialogues.Count; i++)
+        {
+            switch (DialogueController.instance.language)
             {
                 case DialogueController.LanguagesEnum.PT:
-                    sentences.Add(dialogue.dialogues[i].sentence.portuguese);
+                    sentences.Add(dialogoAtual.dialogues[i].sentence.portuguese);
                     break;
 
                 case DialogueController.LanguagesEnum.ENG:
-                    sentences.Add(dialogue.dialogues[i].sentence.english);
+                    sentences.Add(dialogoAtual.dialogues[i].sentence.english);
                     break;
 
                 case DialogueController.LanguagesEnum.SPA:
-                    sentences.Add(dialogue.dialogues[i].sentence.spanish);
+                    sentences.Add(dialogoAtual.dialogues[i].sentence.spanish);
                     break;
             }
-            
         }
     }
 
-    // Quando o player encostar perto do NPC, a janela de diálogo surgirá na tela
     void ShowDialogue()
     {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, dialogueRange, playerLayer);
 
-        if(hit != null)
-        {
-            playerHit = true;
-        }
-        else
-        {
-            playerHit = false;
-        }
+        playerHit = hit != null;
     }
 
     private void OnDrawGizmosSelected()

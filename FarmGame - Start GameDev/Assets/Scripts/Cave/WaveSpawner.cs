@@ -33,6 +33,7 @@ public class WaveSpawner : MonoBehaviour
         {
             dungeonGate.SetActive(false);
             Debug.Log("Você detonou todas as ondas de esqueletos! Agora vá e termine de salvar o dia!");
+            GameManager.instance.estadoLayla = EstadoLayla.DepoisDaCaverna; // Muda o estado da NPC e atualiza o diálogo dela
         }
     }
 
@@ -67,8 +68,7 @@ public class WaveSpawner : MonoBehaviour
         enemiesAlive--;
         if (currentWaveIndex >= waves.Length && enemiesAlive <= 0)
         {
-            Debug.Log("Todas as ondas concluídas!");
-            // Aqui você pode chamar um fim de jogo ou liberar a próxima fase
+            Debug.Log("Todas as ondas concluídas!"); 
         }
     }
 }

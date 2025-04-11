@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ea6642dc982726478ba0e5ab02a71e3, type: 3}
-  m_Name: Starting Dialogue
+  m_Name: DialoguePreCave
   m_EditorClassIdentifier: 
   actor: {fileID: 7382860226980953706, guid: 6ee1fe69f725e7d4785c93a611bff7f5, type: 3}
   speakerSprite: {fileID: 0}
