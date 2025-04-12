@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Destroy(instance); // Destory a instância se existir outra - evita duplicidade
+            Destroy(instance); // Destrói a instância se existir outra - evita duplicidade
         }
     }
 
