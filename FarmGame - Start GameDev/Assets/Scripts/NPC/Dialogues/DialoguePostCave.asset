@@ -17,26 +17,26 @@ MonoBehaviour:
   sentence: 
   dialogues:
   - actorName: Layla
-    profile: {fileID: 0}
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
       portuguese: "Voc\xEA conseguiu? Derrotou todos os monstros? Inacredit\xE1vel!"
       english: 
       spanish: 
   - actorName: "Her\xF3i"
-    profile: {fileID: 0}
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
       portuguese: "N\xE3o foi f\xE1cil, mas finalmente voc\xEA est\xE1 livre de perigos.
         Vamos reconstruir sua casa!"
       english: 
       spanish: 
   - actorName: Layla
-    profile: {fileID: 0}
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
       portuguese: "Muito obrigada, fazendeiro! Voc\xEA foi muito gentil. <3"
       english: 
       spanish: 
   - actorName: Layla
-    profile: {fileID: 0}
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
       portuguese: "Ah... e se voc\xEA precisar, colete 10 madeiras para reconstruir
         minha casa, naquele espa\xE7o de terra bem ao lado do lago de peixes."

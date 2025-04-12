@@ -18,33 +18,35 @@ public class LaylaDialogue : MonoBehaviour
     public DialoguesSettings depoisDaCaverna;
     public DialoguesSettings depoisDeConstruirCasa;
 
-    bool playerHit;
-    private List<string> sentences = new List<string>();
+    private bool playerHit;
+    private Player player;
 
-    // Novo: armazena o estado anterior para detectar mudanças
+    private List<string> sentences = new List<string>();
+    private List<string> actorNames = new List<string>();
+    private List<Sprite> actorSprites = new List<Sprite>();
+
     private EstadoLayla estadoAnterior;
 
     void Start()
     {
         estadoAnterior = GameManager.instance.estadoLayla;
-        GetSpeechText();
+        GetSpeechData();
+        player = FindObjectOfType<Player>();
     }
 
     void Update()
     {
-        // Debug para acompanhar o estado da Layla
-        Debug.Log("Estado da Layla: " + GameManager.instance.estadoLayla);
-
-        // Atualiza os diálogos se o estado mudou
         if (GameManager.instance.estadoLayla != estadoAnterior)
         {
             estadoAnterior = GameManager.instance.estadoLayla;
-            GetSpeechText();
+            GetSpeechData();
         }
 
         if (Input.GetKeyDown(KeyCode.E) && playerHit)
         {
-            DialogueController.instance.Speech(sentences.ToArray());
+            DialogueController.instance.Speech(sentences, actorNames, actorSprites);
+            player.IsPlayerSpeedPaused = true;
+            StartCoroutine(WaitForDialogueToFinish());
         }
     }
 
@@ -53,9 +55,11 @@ public class LaylaDialogue : MonoBehaviour
         ShowDialogue();
     }
 
-    void GetSpeechText()
+    void GetSpeechData()
     {
-        sentences.Clear(); // Limpa antes de carregar
+        sentences.Clear();
+        actorNames.Clear();
+        actorSprites.Clear();
 
         DialoguesSettings dialogoAtual = antesDaCaverna;
 
@@ -64,37 +68,49 @@ public class LaylaDialogue : MonoBehaviour
             case EstadoLayla.DepoisDaCaverna:
                 dialogoAtual = depoisDaCaverna;
                 break;
-
             case EstadoLayla.DepoisDeConstruirCasa:
                 dialogoAtual = depoisDeConstruirCasa;
                 break;
         }
 
-        for (int i = 0; i < dialogoAtual.dialogues.Count; i++)
+        foreach (Sentences s in dialogoAtual.dialogues)
         {
             switch (DialogueController.instance.language)
             {
                 case DialogueController.LanguagesEnum.PT:
-                    sentences.Add(dialogoAtual.dialogues[i].sentence.portuguese);
+                    sentences.Add(s.sentence.portuguese);
                     break;
-
                 case DialogueController.LanguagesEnum.ENG:
-                    sentences.Add(dialogoAtual.dialogues[i].sentence.english);
+                    sentences.Add(s.sentence.english);
                     break;
-
                 case DialogueController.LanguagesEnum.SPA:
-                    sentences.Add(dialogoAtual.dialogues[i].sentence.spanish);
+                    sentences.Add(s.sentence.spanish);
                     break;
             }
+
+            actorNames.Add(s.actorName);
+            actorSprites.Add(s.profile);
         }
     }
 
     void ShowDialogue()
     {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, dialogueRange, playerLayer);
-
         playerHit = hit != null;
     }
+
+    System.Collections.IEnumerator WaitForDialogueToFinish()
+    {
+        // espera enquanto o diálogo estiver ativo
+        while (DialogueController.instance.dialogueWindowObj.activeSelf)
+        {
+            yield return null;
+        }
+
+        // libera o movimento quando o painel sumir
+        player.IsPlayerSpeedPaused = false;
+    }
+
 
     private void OnDrawGizmosSelected()
     {

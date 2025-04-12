@@ -14,18 +14,20 @@ public class DialogueController : MonoBehaviour
     }
 
     [Header("Components")]
-    public GameObject dialogueWindowObj; // Janela do diálogo
-    public Image profileSprite; // Sprite do perfil
-    public Text speechText; // Texto da fala
-    public Text actorNameText; // Nome do NPC
+    public GameObject dialogueWindowObj;
+    public Image profileSprite;
+    public Text speechText;
+    public Text actorNameText;
 
     [Header("Dialogue Settings")]
-    public float typingSpeed; // Velocidade do texto da fala
+    public float typingSpeed;
 
-    // Atributos privados da classe
-    private bool isWindowBeingShowed; // Verifica se a janela está visível
-    private int index; // Indíce das falas/textos
-    private string[] sentences;
+    private bool isWindowBeingShowed;
+    private int index;
+
+    private List<string> sentences;
+    private List<string> actorNames;
+    private List<Sprite> actorSprites;
 
     public LanguagesEnum language;
 
@@ -33,48 +35,36 @@ public class DialogueController : MonoBehaviour
 
     public bool IsWindowBeingShowed { get => isWindowBeingShowed; set => isWindowBeingShowed = value; }
 
-    // Awake é chamado antes do Start 
     private void Awake()
     {
-        instance = this; // Inicializa a instância dessa mesma classe - Criando um Singleton
+        instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // Quebra o texto da fala/diálogo de letra em letra 
     IEnumerator TypeSentence()
     {
-        foreach(char letter in sentences[index].ToCharArray())
+        // Atualiza nome e sprite do ator para essa sentença
+        actorNameText.text = actorNames[index];
+        profileSprite.sprite = actorSprites[index];
+
+        speechText.text = "";
+        foreach (char letter in sentences[index].ToCharArray())
         {
             speechText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
     }
 
-    // Pula para a próxima fala/diálogo
     public void NextSentence()
     {
-        if(speechText.text == sentences[index])
+        if (speechText.text == sentences[index])
         {
-            if (index < sentences.Length - 1)
+            if (index < sentences.Count - 1)
             {
                 index++;
-                speechText.text = "";
                 StartCoroutine(TypeSentence());
             }
-            else // Quando as falas terminam
+            else
             {
-                speechText.text = "";
                 index = 0;
                 dialogueWindowObj.SetActive(false);
                 IsWindowBeingShowed = false;
@@ -82,13 +72,16 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    // Chamará a fala do NPC
-    public void Speech(string[] text)
+    public void Speech(List<string> lines, List<string> names, List<Sprite> sprites)
     {
-        if(!IsWindowBeingShowed)
+        if (!IsWindowBeingShowed)
         {
             dialogueWindowObj.SetActive(true);
-            sentences = text;
+            sentences = lines;
+            actorNames = names;
+            actorSprites = sprites;
+
+            index = 0;
             StartCoroutine(TypeSentence());
             IsWindowBeingShowed = true;
         }
