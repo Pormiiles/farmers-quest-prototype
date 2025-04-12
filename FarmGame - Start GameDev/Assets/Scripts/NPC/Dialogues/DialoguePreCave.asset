@@ -19,49 +19,149 @@ MonoBehaviour:
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "Oh... que bom que voc\xEA chegou! Por favor, me ajude! Alguns
-        monstros destru\xEDram a minha casa. A prop\xF3sito, me chamo Layla!"
+      portuguese: '(gritando) SOCORRO! POR FAVOR, ME AJUDE! '
       english: 
       spanish: 
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
-      portuguese: Meu Deus, que terror! Mas fique calma. Como posso te ajudar, Layla?
+      portuguese: "(surpreso) O que aconteceu?! Voc\xEA est\xE1 bem? "
       english: 
       spanish: 
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "\xC9 muita gentileza sua, fazendeiro. Eu vi os monstros indo naquela
-        entrada, para as cavernas."
+      portuguese: "(chorando) DESTRU\xCDRAM A MINHA CASA! FORAM OS MALDITOS MONSTROS
+        DAS CAVERNAS!"
       english: 
       spanish: 
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
-      portuguese: "Entraram nas cavernas?! OK, preciso agir r\xE1pido! Como posso
-        entrar l\xE1?"
+      portuguese: 'Sinto muito pelo o que aconteceu. Mas mantenha a calma, eu estou
+        aqui agora e vou te ajudar. '
       english: 
       spanish: 
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "Para entrar nas cavernas, voc\xEA vai precisar pescar 5 peixes
-        e colher 10 cenouras. Fique a vontade para plantar no meu terreno logo ali
-        ao lado!"
-      english: 
-      spanish: 
-  - actorName: Layla
-    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
-    sentence:
-      portuguese: "Ah... e mais uma coisa. Tome muito cuidado, ouvi falar que as
-        cavernas \xE9 um lugar muito perigoso. Os monstros atacam em ondas!"
+      portuguese: "(secando as l\xE1grimas) Tu-tudo bem, desculpa por isso. Sou Layla
+        e voc\xEA\u2026 com certeza deve ser o fazendeiro vizinho, certo? "
       english: 
       spanish: 
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
-      portuguese: "Entendi! Tomarei cuidado. Voltarei assim que acabar e voc\xEA
-        ter\xE1 sua casa de volta, Layla! :)"
+      portuguese: "\xC9 isso a\xED! Agora voc\xEA pode me contar melhor o que houve?
+        Voc\xEA estava aqui e parecia desnorteada. Ningu\xE9m veio te ajudar? "
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "Ningu\xE9m. Eu tentei chamar por ajuda, segui pela estrada do
+        vilarejo indo para o Sul, mas vi que os monstros bloquearam a passagem. Provavelmente
+        para agir r\xE1pido. "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Eles causaram mais danos al\xE9m da sua casa?  "
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "Aparentemente, n\xE3o. Hoje era para ser um dia perfeito. Est\xE1
+        ensolarado e eu queria come\xE7ar a plantar cenouras, mas n\xE3o foi poss\xEDvel. "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Eles est\xE3o buscando por algo em espec\xEDfico? "
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "Ora, comida, \xE9 claro. N\xE3o acharam planta\xE7\xF5es crescidas
+        para colher, e ent\xE3o viram minha casa. Tentaram me pegar, mas eu fugi
+        antes do pior acontecer.  "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Lamento muito por isso. Voc\xEA disse que viu os monstros indo
+        para onde mesmo? "
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "Depois que destru\xEDram tudo, ouvi um barulho alt\xEDssimo indo
+        em dire\xE7\xE3o \xE0s cavernas, logo ao Norte. Voltaram para l\xE1. E temo
+        que se n\xE3o agirmos r\xE1pido\u2026 "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Eles v\xE3o voltar de novo, certeza. Me diga, como posso entrar
+        l\xE1? "
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "Voc\xEA vai precisar dar a eles o que querem: Comida. Pescar 5
+        peixes e colher 10 cenouras deve bastar para voc\xEA ter acesso \xE0s cavernas. "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "5 Peixes e 10 Cenouras? Como posso conseguir r\xE1pido assim?"
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "Voc\xEA pode pescar bem ali, naquele lago indo para o Norte, pouco
+        antes das cavernas.  "
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "E para as cenouras, fique a vontade para arar e regar a terra
+        desse espa\xE7o aqui ao lado.  "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Farei isso. Voc\xEA ver\xE1 que tudo vai dar certo!  "
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "\xDAltima coisa, tome cuidado. Os monstros atacam em ondas. Pode
+        ser muito perigoso. "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: '(confiante) Entendi. Terei cuidado. Voltarei em breve. '
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "(esperan\xE7osa) Confio em voc\xEA. "
       english: 
       spanish: 

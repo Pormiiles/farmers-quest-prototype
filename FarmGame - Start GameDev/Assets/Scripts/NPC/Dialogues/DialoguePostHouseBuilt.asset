@@ -16,21 +16,50 @@ MonoBehaviour:
   speakerSprite: {fileID: 0}
   sentence: 
   dialogues:
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Prontinho! Casa reconstru\xEDda. Novinha em folha. "
+      english: 
+      spanish: 
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "Voc\xEA conseguiu mesmo! Que incr\xEDvel!"
+      portuguese: "(entusiasmada) N\xE3o sei nem como posso te agradecer! "
       english: 
       spanish: 
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
-      portuguese: "N\xE3o foi nada demais. \xC9 um prazer poder ajudar!"
+      portuguese: "(feliz) Ah, n\xE3o precisa. Eu escutei uns gritos vindos da sua
+        fazenda e s\xF3 decidi verificar. Qualquer um teria feito isso! "
       english: 
       spanish: 
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: Muito obrigada, fazendeiro! <3
+      portuguese: "Fico at\xE9 sem gra\xE7a. Mas\u2026 olha, voc\xEA n\xE3o quer
+        dar um passeio? Dever\xEDamos ir ao vilarejo avisar o pessoal, com certeza
+        est\xE3o preocupados conosco! "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Claro, podemos ir l\xE1. "
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "Muito bem! Voc\xEA pode ir na frente, vou terminar de ajeitar
+        umas coisas por aqui e te encontro l\xE1! \xC9 s\xF3 seguir a estrada indo
+        para o Sul. "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Te vejo l\xE1, ent\xE3o!"
       english: 
       spanish: 

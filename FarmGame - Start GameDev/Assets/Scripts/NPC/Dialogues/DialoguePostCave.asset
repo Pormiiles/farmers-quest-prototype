@@ -19,26 +19,54 @@ MonoBehaviour:
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "Voc\xEA conseguiu? Derrotou todos os monstros? Inacredit\xE1vel!"
+      portuguese: "(surpresa) Oh, voc\xEA voltou!!! Fazendeiro, \xE9 bom ver que
+        voc\xEA est\xE1 vivo! "
       english: 
       spanish: 
-  - actorName: "Her\xF3i"
+  - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
-      portuguese: "N\xE3o foi f\xE1cil, mas finalmente voc\xEA est\xE1 livre de perigos.
-        Vamos reconstruir sua casa!"
+      portuguese: "Caramba\u2026 n\xE3o foi f\xE1cil, mas consegui derrotar a onda
+        de monstros que voc\xEA falou. "
       english: 
       spanish: 
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "Muito obrigada, fazendeiro! Voc\xEA foi muito gentil. <3"
+      portuguese: "(feliz) N\xE3o poderia estar mais contente, voc\xEA fez um trabalho
+        e tanto!"
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Mas o trabalho ainda n\xE3o acabou, ora. Temos que reconstruir
+        sua casa, como posso ajudar? "
       english: 
       spanish: 
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "Ah... e se voc\xEA precisar, colete 10 madeiras para reconstruir
-        minha casa, naquele espa\xE7o de terra bem ao lado do lago de peixes."
+      portuguese: "(feliz) Ah, certo. Voc\xEA pode coletar 10 madeiras na floresta.  "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "Entendi. Onde ficava sua antiga casa que foi destru\xEDda?"
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "Ela ficava \xE0 direita do lago de peixes. Assim que chegar, voc\xEA
+        ver\xE1 um espa\xE7o de terra marcado no ch\xE3o. Quando tiver as 10 madeiras,
+        poder\xE1 construir. "
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: OK, pode deixar comigo! :)
       english: 
       spanish: 
