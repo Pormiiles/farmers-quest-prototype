@@ -45,6 +45,8 @@ public class LaylaDialogue : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && playerHit)
         {
             DialogueController.instance.Speech(sentences, actorNames, actorSprites);
+
+            // player não pode se mover enquanto a caixa de diálogo estiver ativa
             player.IsPlayerSpeedPaused = true;
             StartCoroutine(WaitForDialogueToFinish());
         }
