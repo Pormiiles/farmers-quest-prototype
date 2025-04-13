@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManagement : MonoBehaviour
+public class FarmSceneManagement : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Farm");
         }
     }
 }
