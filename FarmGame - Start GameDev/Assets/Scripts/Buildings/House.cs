@@ -21,6 +21,8 @@ public class House : MonoBehaviour
     private PlayerAnimation playerAnim;
     private PlayerItems playerItems;
 
+    public GameObject farmGatesObject;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -63,6 +65,9 @@ public class House : MonoBehaviour
         // Atualiza estado da Layla
         GameManager.instance.estadoLayla = EstadoLayla.DepoisDeConstruirCasa;
         Debug.Log("Casa da Layla construída!");
+
+        // Libera o acesso ao vilarejo (portões abrem)
+        openFarmGates();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,5 +80,10 @@ public class House : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
             isPlayerDetected = false;
+    }
+
+    public void openFarmGates()
+    {
+        farmGatesObject.SetActive(false);
     }
 }

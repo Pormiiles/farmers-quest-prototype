@@ -15345,7 +15345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4252219398992752817, guid: 907ad792c44598e459c4c092c92020a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.8
+      value: 43.5
       objectReference: {fileID: 0}
     - target: {fileID: 4252219398992752817, guid: 907ad792c44598e459c4c092c92020a1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15378,6 +15378,22 @@ PrefabInstance:
     - target: {fileID: 4252219398992752817, guid: 907ad792c44598e459c4c092c92020a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375566220096514253, guid: 907ad792c44598e459c4c092c92020a1, type: 3}
+      propertyPath: m_Size.x
+      value: 13.799451
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375566220096514253, guid: 907ad792c44598e459c4c092c92020a1, type: 3}
+      propertyPath: m_Size.y
+      value: 0.18840408
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375566220096514253, guid: 907ad792c44598e459c4c092c92020a1, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.10361433
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375566220096514253, guid: 907ad792c44598e459c4c092c92020a1, type: 3}
+      propertyPath: m_Offset.y
+      value: -35.4821
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 190159333343004026, guid: 907ad792c44598e459c4c092c92020a1, type: 3}
@@ -22942,6 +22958,7 @@ GameObject:
   - component: {fileID: 1770097526}
   - component: {fileID: 1770097525}
   - component: {fileID: 1770097527}
+  - component: {fileID: 1770097528}
   m_Layer: 0
   m_Name: Topography Grass 1
   m_TagString: Untagged
@@ -33777,6 +33794,42 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!19719996 &1770097528
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770097523}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &1778791077
 GameObject:
   m_ObjectHideFlags: 0
