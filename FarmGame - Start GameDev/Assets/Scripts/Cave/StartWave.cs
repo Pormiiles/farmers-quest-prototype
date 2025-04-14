@@ -6,23 +6,13 @@ public class StartWave : MonoBehaviour
 {
     public GameObject dungeonGate;
     public GameObject waveSpawner;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AudioClip clip;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
+            AudioManager.instance.playBGM(clip);
             dungeonGate.SetActive(true);
             waveSpawner.SetActive(true);
         }

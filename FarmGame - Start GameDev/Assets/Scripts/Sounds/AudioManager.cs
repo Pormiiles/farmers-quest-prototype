@@ -5,19 +5,21 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     // Singleton para manter o objeto do AudioController na cena 
-    public static AudioManager instance;
+    public static AudioManager instance { get; private set; }
     [SerializeField] private AudioSource audioSource;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(instance);
+            DontDestroyOnLoad(gameObject);
         }
-        else
+        else if(instance != null && instance != this)
         {
-            Destroy(instance); // Destrói a instância se existir outra - evita duplicidade
+            Destroy(gameObject); // Destrói a instância se existir outra - evita duplicidade
         }
     }
 
@@ -25,5 +27,10 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.clip = clip;
         audioSource.Play();
+    }
+
+    public void playOneShotSound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

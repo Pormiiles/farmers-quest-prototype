@@ -50,6 +50,12 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     #region Movement 
+
+    public void onIdle()
+    {
+        anim.SetInteger("transition", 0);
+    }
+
     void onAttackEnemy()
     {
         Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, enemyLayer);

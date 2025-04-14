@@ -6,16 +6,20 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseGamePanel;
+    public AudioClip openUI;
+    public AudioClip closeUI;
 
     public void pauseGameButton()
     {
         Time.timeScale = 0f;
+        AudioManager.instance.playOneShotSound(openUI);
         pauseGamePanel.SetActive(true);
     }
 
     public void resumeGameButton()
     {
         Time.timeScale = 1f;
+        AudioManager.instance.playOneShotSound(closeUI);
         pauseGamePanel.SetActive(false);
     }
 
