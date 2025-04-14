@@ -38,9 +38,27 @@ MonoBehaviour:
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "Fico at\xE9 sem gra\xE7a. Mas\u2026 olha, voc\xEA n\xE3o quer
-        dar um passeio? Dever\xEDamos ir ao vilarejo avisar o pessoal, com certeza
-        est\xE3o preocupados conosco! "
+      portuguese: "Fico at\xE9 sem jeito assim! (risos) "
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "Oh, acabei de ver! Voc\xEA fez com que os port\xF5es para a vila
+        fossem abertos novamente? Incr\xEDvel!"
+      english: 
+      spanish: 
+  - actorName: Fazendeiro
+    profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
+    sentence:
+      portuguese: "N\xE3o foi nada, mexi uns pauzinhos aqui e... TCHARAM!"
+      english: 
+      spanish: 
+  - actorName: Layla
+    profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
+    sentence:
+      portuguese: "(impressionada) Voc\xEA \xE9 demais! A\xED, voc\xEA quer dar uma
+        voltinha pelo vilarejo? Todo mundo vai querer te conhecer."
       english: 
       spanish: 
   - actorName: Fazendeiro
@@ -52,7 +70,7 @@ MonoBehaviour:
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "Muito bem! Voc\xEA pode ir na frente, vou terminar de ajeitar
+      portuguese: "Muito bem! Voc\xEA pode ir na frente, eu vou terminar de ajeitar
         umas coisas por aqui e te encontro l\xE1! \xC9 s\xF3 seguir a estrada indo
         para o Sul. "
       english: 

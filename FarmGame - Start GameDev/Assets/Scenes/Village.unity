@@ -195,6 +195,16 @@ Transform:
   - {fileID: 1493735773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &33797575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4315341440415464194, guid: 66aefcd159987094fb173cb4c74629e1, type: 3}
+  m_PrefabInstance: {fileID: 4075834959477784801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &33797576 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7842238908077897807, guid: 66aefcd159987094fb173cb4c74629e1, type: 3}
+  m_PrefabInstance: {fileID: 4075834959477784801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &106396531
 GameObject:
   m_ObjectHideFlags: 0
@@ -40494,7 +40504,7 @@ GameObject:
   - component: {fileID: 1081657649}
   - component: {fileID: 1081657651}
   m_Layer: 0
-  m_Name: Cutscene1
+  m_Name: Cutscene1 Timeline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40549,6 +40559,12 @@ PlayableDirector:
     value: {fileID: 1565879104}
   - key: {fileID: -8469326024283088485, guid: 9a9f0e0ca081d9147a580bd48fa8fe01, type: 2}
     value: {fileID: 1565879102}
+  - key: {fileID: 2583089582200791174, guid: 9a9f0e0ca081d9147a580bd48fa8fe01, type: 2}
+    value: {fileID: 33797576}
+  - key: {fileID: 3927081730527961083, guid: 9a9f0e0ca081d9147a580bd48fa8fe01, type: 2}
+    value: {fileID: 33797576}
+  - key: {fileID: -4347623840462823775, guid: 9a9f0e0ca081d9147a580bd48fa8fe01, type: 2}
+    value: {fileID: 33797575}
   m_ExposedReferences:
     m_References:
     - 60a1518813062a04698d025a27f06145: {fileID: 0}
@@ -40567,13 +40583,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081657648}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -1.1392037, y: 46.6, z: -0.091960385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!114 &1081657651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101184,7 +101200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1325450748086314251, guid: 66aefcd159987094fb173cb4c74629e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.71
+      value: 12.88
       objectReference: {fileID: 0}
     - target: {fileID: 1325450748086314251, guid: 66aefcd159987094fb173cb4c74629e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -101225,6 +101241,10 @@ PrefabInstance:
     - target: {fileID: 4315341440415464194, guid: 66aefcd159987094fb173cb4c74629e1, type: 3}
       propertyPath: m_Name
       value: NPC_Layla_Static
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315341440415464194, guid: 66aefcd159987094fb173cb4c74629e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

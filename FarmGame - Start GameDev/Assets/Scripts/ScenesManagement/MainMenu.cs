@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject instructionsPanel;
+    public GameObject controlsPanel;
 
     public void PlayButton(string loadScene)
     {
@@ -17,9 +18,15 @@ public class MainMenu : MonoBehaviour
         instructionsPanel.SetActive(true);
     }
 
+    public void ControlsButton()
+    {
+        controlsPanel.SetActive(true);
+    }
+
     public void GoBackToHome()
     {
         instructionsPanel.SetActive(false);
+        controlsPanel.SetActive(false);
     }
 
     public void QuitButton()
