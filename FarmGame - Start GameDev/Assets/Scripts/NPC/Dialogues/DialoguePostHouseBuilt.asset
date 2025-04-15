@@ -38,7 +38,7 @@ MonoBehaviour:
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
-      portuguese: "Fico at\xE9 sem jeito assim! (risos) "
+      portuguese: "Fico at\xE9 sem jeito! (risos) "
       english: 
       spanish: 
   - actorName: Layla

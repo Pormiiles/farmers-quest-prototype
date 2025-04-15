@@ -37,6 +37,12 @@ public class DungeonUI : MonoBehaviour
         // Atualiza os textos na UI
         waveText.text = "Onda: " + (waveSpawner.currentWaveIndex + 1);
         playerHealthText.text = "Vida: " + player.currentPlayerHealth;
+
+        // Desativa a UI assim que o Player vencer as ondas de inimigos
+        if(waveSpawner.didPlayerWin == true)
+        {
+            dungeonUIPanel.SetActive(false);
+        }
     }
 
     public void RestartScene()

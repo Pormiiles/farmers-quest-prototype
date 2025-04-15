@@ -9,7 +9,8 @@ public class Casting : MonoBehaviour
     private PlayerItems playerItems;
     private PlayerAnimation playerAnim;
     [SerializeField] private int castingPercentage; // Chance de pescar um peixe
-    public GameObject fishPrefab; 
+    public GameObject fishPrefab;
+    public GameObject keyAdvice;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class Casting : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerDetected = true;
+            keyAdvice.SetActive(true);
         }
     }
 
@@ -50,6 +52,7 @@ public class Casting : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerDetected = false;
+            keyAdvice.SetActive(false);
         }
     }
 }

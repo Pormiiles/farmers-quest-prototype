@@ -8,6 +8,7 @@ public class Water : MonoBehaviour
     [SerializeField] private Boolean playerDetected;
     private PlayerItems player;
     [SerializeField] private float waterValue;
+    public GameObject keyAdvice;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class Water : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             playerDetected = true;
+            keyAdvice.SetActive(true);
         }
     }
 
@@ -37,6 +39,7 @@ public class Water : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerDetected = false;
+            keyAdvice.SetActive(false);
         }
     }
 }

@@ -17,6 +17,7 @@ public class LaylaDialogue : MonoBehaviour
     public DialoguesSettings antesDaCaverna;
     public DialoguesSettings depoisDaCaverna;
     public DialoguesSettings depoisDeConstruirCasa;
+    public GameObject keyAdvice;
 
     private bool playerHit;
     private Player player;
@@ -45,10 +46,19 @@ public class LaylaDialogue : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && playerHit)
         {
             DialogueController.instance.Speech(sentences, actorNames, actorSprites);
+            keyAdvice.SetActive(true);
 
             // player não pode se mover enquanto a caixa de diálogo estiver ativa
             player.IsPlayerSpeedPaused = true;
             StartCoroutine(WaitForDialogueToFinish());
+        }
+
+        if(playerHit)
+        {
+            keyAdvice.SetActive(true);
+        } else
+        {
+            keyAdvice.SetActive(false);
         }
     }
 
@@ -98,7 +108,7 @@ public class LaylaDialogue : MonoBehaviour
     void ShowDialogue()
     {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, dialogueRange, playerLayer);
-        playerHit = hit != null;
+        playerHit = hit != null;  
     }
 
     System.Collections.IEnumerator WaitForDialogueToFinish()

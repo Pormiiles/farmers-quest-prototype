@@ -22,6 +22,7 @@ public class House : MonoBehaviour
     private PlayerItems playerItems;
 
     public GameObject farmGatesObject;
+    public GameObject keyAdvice;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class House : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerDetected && !isBuilding &&
+        if(isPlayerDetected && !isBuilding &&
             Input.GetKeyDown(KeyCode.E) &&
             GameManager.instance.estadoLayla == EstadoLayla.DepoisDaCaverna &&
             playerItems.woodTotal >= woodRequired)
@@ -73,13 +74,23 @@ public class House : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             isPlayerDetected = true;
+
+            if(GameManager.instance.estadoLayla == EstadoLayla.DepoisDaCaverna && playerItems.woodTotal >= 10)
+            {
+                keyAdvice.SetActive(true);
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             isPlayerDetected = false;
+            keyAdvice.SetActive(false);
+        }
     }
 
     public void openFarmGates()

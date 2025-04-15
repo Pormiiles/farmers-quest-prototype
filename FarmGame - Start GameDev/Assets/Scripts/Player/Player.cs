@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     public float currentPlayerHealth;
     private bool isPlayerDead;
 
+    public AudioClip playerDeathBGMClip;
+
     private DungeonUI dungeonUI;
 
     // Player properties
@@ -157,6 +159,7 @@ public class Player : MonoBehaviour
             isPlayerDead = true;
             Time.timeScale = 0f;
             dungeonUI.gameOverPanel.SetActive(true);
+            AudioManager.instance.playBGM(playerDeathBGMClip);
         }
     }
 

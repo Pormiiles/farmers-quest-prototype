@@ -18,7 +18,8 @@ public class WaveSpawner : MonoBehaviour
     private int enemiesAlive = 0;
     private bool waveInProgress = false;
     public GameObject dungeonGate;
-
+    public AudioClip clip;
+    public bool didPlayerWin;
     public Transform[] spawnPoints;
 
     void Update()
@@ -26,7 +27,6 @@ public class WaveSpawner : MonoBehaviour
         if (!waveInProgress && enemiesAlive == 0 && currentWaveIndex < waves.Length)
         {
             StartCoroutine(SpawnWave(waves[currentWaveIndex]));
-
         }
 
         if (currentWaveIndex >= waves.Length && enemiesAlive == 0 && dungeonGate.activeSelf)
@@ -34,6 +34,8 @@ public class WaveSpawner : MonoBehaviour
             dungeonGate.SetActive(false);
             Debug.Log("Você detonou todas as ondas de esqueletos! Agora vá e termine de salvar o dia!");
             GameManager.instance.estadoLayla = EstadoLayla.DepoisDaCaverna; // Muda o estado da NPC e atualiza o diálogo dela
+            AudioManager.instance.playOneShotSound(clip);
+            didPlayerWin = true;
         }
     }
 

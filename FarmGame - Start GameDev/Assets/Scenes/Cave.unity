@@ -1327,6 +1327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseGamePanel: {fileID: 338713547}
+  openUI: {fileID: 0}
+  closeUI: {fileID: 0}
 --- !u!114 &396165288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6091,7 +6093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 640464471}
   - component: {fileID: 640464473}
-  - component: {fileID: 640464472}
+  - component: {fileID: 640464474}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -6114,7 +6116,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1720769389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &640464472
+--- !u!114 &640464473
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640464470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &640464474
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6157,18 +6171,6 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
---- !u!114 &640464473
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640464470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &702222887
 GameObject:
   m_ObjectHideFlags: 0
@@ -6645,6 +6647,8 @@ MonoBehaviour:
     spawnInterval: 10
   currentWaveIndex: 0
   dungeonGate: {fileID: 1005382499}
+  clip: {fileID: 8300000, guid: 7e2790c0f29367c4bbb9547ec4cdc8b9, type: 3}
+  didPlayerWin: 0
   spawnPoints:
   - {fileID: 953525731}
   - {fileID: 1644136918}
@@ -9072,6 +9076,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseGamePanel: {fileID: 338713547}
+  openUI: {fileID: 0}
+  closeUI: {fileID: 0}
 --- !u!114 &1196569310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15560,6 +15566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseGamePanel: {fileID: 338713547}
+  openUI: {fileID: 0}
+  closeUI: {fileID: 0}
 --- !u!114 &1370150907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16478,6 +16486,10 @@ PrefabInstance:
       propertyPath: totalPlayerHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2579262135840513094, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
+      propertyPath: playerDeathBGMClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 117ae814bbfa82546ba64f5545150e1a, type: 3}
     - target: {fileID: 8413279732667514590, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -45746,7 +45758,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonGate: {fileID: 1005382499}
   waveSpawner: {fileID: 833424347}
-  clip: {fileID: 8300000, guid: eeb5809847a462343a0afee12b95baa3, type: 3}
+  clipBGM: {fileID: 8300000, guid: eeb5809847a462343a0afee12b95baa3, type: 3}
+  clipSFX: {fileID: 8300000, guid: 7e2790c0f29367c4bbb9547ec4cdc8b9, type: 3}
 --- !u!61 &1889535338
 BoxCollider2D:
   m_ObjectHideFlags: 0
