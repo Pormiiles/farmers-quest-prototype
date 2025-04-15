@@ -83,14 +83,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (player.playerDirection.sqrMagnitude > 0) // Se o player estiver se movimentando
         {
-            if (player.isPlayerRolling)
-            {
-                anim.SetTrigger("isRolling");
-            }
-            else
-            {
-                anim.SetInteger("transition", 1);
-            }
+            anim.SetInteger("transition", 1);
         }
         else
         {

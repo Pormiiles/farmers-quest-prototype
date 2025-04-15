@@ -261,8 +261,12 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && canRoll) // Se o botão direito do mouse for pressionado e o player puder rolar
         {
             _isPlayerRolling = true; // Ativa a rolagem
+
+            GetComponent<Animator>().SetTrigger("isRolling");
+
             playerSpeed = playerRollSpeed; // Altera a velocidade para a de rolagem
             canRoll = false; // Bloqueia a rolagem até que o cooldown termine
+
 
             StartCoroutine(EndRoll()); // Finaliza a rolagem após o tempo da animação
         }
@@ -271,9 +275,11 @@ public class Player : MonoBehaviour
     // Método para finalizar a rolagem após um tempo fixo
     private IEnumerator EndRoll()
     {
-        yield return new WaitForSeconds(0.1f); // Duração da animação de rolagem (ajuste conforme necessário)
+        yield return new WaitForSeconds(0.09f); // Duração da animação de rolagem (ajuste conforme necessário)
         _isPlayerRolling = false; // Finaliza a rolagem
         playerSpeed = playerInitialSpeed; // Restaura a velocidade inicial do player
+
+        GetComponent<Animator>().SetTrigger("isRolling");
 
         StartCoroutine(RollCooldown()); // Inicia o cooldown para liberar a rolagem novamente
     }
