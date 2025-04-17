@@ -8,8 +8,10 @@ public class DungeonUI : MonoBehaviour
 {
     public GameObject dungeonUIPanel;
     public TMP_Text waveText;
-    public TMP_Text playerHealthText;
+    public Image playerHealthBarUI;
     public GameObject gameOverPanel;
+    public GameObject hudCollectable;
+    public GameObject hudTools;
 
     private Player player;
     private WaveSpawner waveSpawner;
@@ -36,12 +38,18 @@ public class DungeonUI : MonoBehaviour
 
         // Atualiza os textos na UI
         waveText.text = "Onda: " + (waveSpawner.currentWaveIndex + 1);
-        playerHealthText.text = "Vida: " + player.currentPlayerHealth;
+        playerHealthBarUI.fillAmount = player.currentPlayerHealth / player.totalPlayerHealth;
 
         // Desativa a UI assim que o Player vencer as ondas de inimigos
         if(waveSpawner.didPlayerWin == true)
         {
             dungeonUIPanel.SetActive(false);
+        }
+
+        if(player.isPlayerDead)
+        {
+            hudCollectable.SetActive(false);
+            hudTools.SetActive(false);
         }
     }
 

@@ -34,7 +34,12 @@ public class PlayerAnimation : MonoBehaviour
         onMove();
         onRun();
         onSwordAttack();
-  
+
+        if(player.isPlayerDead)
+        {
+            onPlayerDeath();
+            return;
+        }
 
         if (isHitting)
         {
@@ -70,6 +75,11 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    void onPlayerDeath()
+    {
+        anim.ResetTrigger("isHit");
+        anim.SetTrigger("isDead");
+    }
 
     void onSwordAttack()
     {

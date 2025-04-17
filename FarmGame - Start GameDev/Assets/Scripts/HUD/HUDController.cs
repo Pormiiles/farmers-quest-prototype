@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class HUDController : MonoBehaviour
 {
     [SerializeField] private Image waterBarUI;
-    [SerializeField] private Image woodBarUI;
-    [SerializeField] private Image carrotBarUI;
-    [SerializeField] private Image fishBarUI;
+    [SerializeField] private Text woodNumberText;
+    [SerializeField] private Text carrotNumberText;
+    [SerializeField] private Text fishNumberText;
 
     [SerializeField] private List<Image> toolsUI = new List<Image>();
     [SerializeField] private Color selectedToolColor;
@@ -27,9 +27,6 @@ public class HUDController : MonoBehaviour
     void Start()
     {
         waterBarUI.fillAmount = 0f;
-        woodBarUI.fillAmount = 0f;
-        carrotBarUI.fillAmount = 0f;
-        fishBarUI.fillAmount = 0f;
     }
 
     // Update is called once per frame
@@ -37,9 +34,9 @@ public class HUDController : MonoBehaviour
     {
         // Atualiza as barras de quantidade na UI de itens coletáveis
         waterBarUI.fillAmount = playerItems.waterTotal / playerItems.WaterLimit1;
-        carrotBarUI.fillAmount = playerItems.seedCarrotTotal / playerItems.SeedCarrotsLimit;
-        woodBarUI.fillAmount = playerItems.woodTotal / playerItems.WoodLimit;
-        fishBarUI.fillAmount = playerItems.fishTotal / playerItems.FishLimit;
+        woodNumberText.text = playerItems.woodTotal.ToString();
+        carrotNumberText.text = playerItems.seedCarrotTotal.ToString();
+        fishNumberText.text = playerItems.fishTotal.ToString();
 
         // Atualiza o valor Alpha da ferramenta que foi selecionado ou não na UI do inventário
         for (int i = 0; i < toolsUI.Count; i++)

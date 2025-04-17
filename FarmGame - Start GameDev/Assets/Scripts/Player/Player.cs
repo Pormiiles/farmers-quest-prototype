@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     public float totalPlayerHealth;
     public float currentPlayerHealth;
-    private bool isPlayerDead;
+    public bool isPlayerDead;
 
     public AudioClip playerDeathBGMClip;
 
@@ -157,10 +157,17 @@ public class Player : MonoBehaviour
         if (currentPlayerHealth <= 0)
         {
             isPlayerDead = true;
-            Time.timeScale = 0f;
-            dungeonUI.gameOverPanel.SetActive(true);
-            AudioManager.instance.playBGM(playerDeathBGMClip);
+            DisablePlayerControls();
+            StartCoroutine(playerDeathScreenAfterCutscene());
         }
+    }
+
+    private IEnumerator playerDeathScreenAfterCutscene()
+    {
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0f;
+        dungeonUI.gameOverPanel.SetActive(true);
+        AudioManager.instance.playBGM(playerDeathBGMClip);
     }
 
     void onDigging()
