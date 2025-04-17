@@ -330,9 +330,16 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Skeleton skeleton = collision.GetComponent<Skeleton>();
+            Goblin goblin = collision.GetComponent<Goblin>();
+
             if (skeleton != null)
             {
                 skeleton.TakeDamage(1f);
+            }
+
+            if(goblin != null)
+            {
+                goblin.TakeDamage(1f);
             }
         }
     }

@@ -68,9 +68,15 @@ public class PlayerAnimation : MonoBehaviour
         if (hit != null)
         {
             Skeleton skeleton = hit.GetComponentInParent<Skeleton>();
+            Goblin goblin = hit.GetComponentInParent<Goblin>();
+
             if (skeleton != null)
             {
                 skeleton.TakeDamage(1f); // Aplica 1 ponto de dano
+            }
+            if(goblin != null)
+            {
+                goblin.TakeDamage(1f); // Aplica 1 ponto de dano
             }
         }
     }

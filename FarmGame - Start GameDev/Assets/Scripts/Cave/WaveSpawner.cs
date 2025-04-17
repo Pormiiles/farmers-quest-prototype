@@ -32,7 +32,7 @@ public class WaveSpawner : MonoBehaviour
         if (currentWaveIndex >= waves.Length && enemiesAlive == 0 && dungeonGate.activeSelf)
         {
             dungeonGate.SetActive(false);
-            Debug.Log("Você detonou todas as ondas de esqueletos! Agora vá e termine de salvar o dia!");
+            Debug.Log("Você detonou todas as ondas de monstros! Agora vá e termine de salvar o dia!");
             GameManager.instance.estadoLayla = EstadoLayla.DepoisDaCaverna; // Muda o estado da NPC e atualiza o diálogo dela
             AudioManager.instance.playOneShotSound(clip);
             didPlayerWin = true;
@@ -62,7 +62,17 @@ public class WaveSpawner : MonoBehaviour
         GameObject enemy = Instantiate(enemyToSpawn, spawnPoint.position, Quaternion.identity);
         enemiesAlive++;
 
-        enemy.GetComponent<Skeleton>().onDeath += OnEnemyDeath;
+        Skeleton skeleton = enemy.GetComponent<Skeleton>();
+        if(skeleton != null)
+        {
+            skeleton.onDeath += OnEnemyDeath;
+        }
+
+        Goblin goblin = enemy.GetComponent<Goblin>();
+        if(goblin != null)
+        {
+            goblin.onDeath += OnEnemyDeath;
+        }
     }
 
     void OnEnemyDeath()

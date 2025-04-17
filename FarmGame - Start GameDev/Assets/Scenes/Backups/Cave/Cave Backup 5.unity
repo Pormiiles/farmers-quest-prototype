@@ -5288,14 +5288,13 @@ MonoBehaviour:
     spawnInterval: 10
   - waveName: Quadra
     enemyPrefabs:
-    - {fileID: 7802257016303101133, guid: 51ba07a49cbdb5143964493737492a97, type: 3}
+    - {fileID: 6947702784700974074, guid: 950afbb4c8307784c882a3ef159e90a7, type: 3}
     enemyCount: 4
     spawnInterval: 8
-  - waveName: Hexa
+  - waveName: Penta
     enemyPrefabs:
     - {fileID: 6947702784700974074, guid: 950afbb4c8307784c882a3ef159e90a7, type: 3}
-    - {fileID: 7802257016303101133, guid: 51ba07a49cbdb5143964493737492a97, type: 3}
-    enemyCount: 6
+    enemyCount: 5
     spawnInterval: 7
   currentWaveIndex: 0
   dungeonGate: {fileID: 1005382499}
