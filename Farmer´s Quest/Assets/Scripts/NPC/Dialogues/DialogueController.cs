@@ -80,10 +80,17 @@ public class DialogueController : MonoBehaviour
             sentences = lines;
             actorNames = names;
             actorSprites = sprites;
-
+            
             index = 0;
             StartCoroutine(TypeSentence());
             IsWindowBeingShowed = true;
         }
+    }
+
+    public void closeWindow()
+    {
+        dialogueWindowObj.SetActive(false);
+        isWindowBeingShowed = false;
+        index = 0;
     }
 }

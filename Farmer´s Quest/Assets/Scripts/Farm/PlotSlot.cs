@@ -8,6 +8,7 @@ public class PlotSlot : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite hole;
     [SerializeField] private Sprite seedCarrot;
+    [SerializeField] private Sprite defaultSoil;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip holeSFX;
     [SerializeField] private AudioClip carrotPickedUp;
@@ -49,11 +50,17 @@ public class PlotSlot : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && wasCarrotPickedUp && isPlayerColliding)
             {
-                spriteRenderer.sprite = hole;
+                spriteRenderer.sprite = defaultSoil;
                 audioSource.PlayOneShot(holeSFX);
                 playerItems.seedCarrotTotal++;
                 currentWaterAmount = 0f;
                 wasCarrotPickedUp = false;
+
+                // Reseta as condições para o Player poder reiniciar o ciclo
+                digAmount = initialDigAmount;
+                currentWaterAmount = 0f;
+                wasCarrotPickedUp = false;
+                wasHoleDug = false;
             }
         }
         

@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: FarmGame - Start GameDev
+  productName: "Farmer\xB4s Quest"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -721,7 +721,7 @@ PlayerSettings:
   cloudProjectId: a9188b82-10f5-4faa-945c-c7aa717e64b9
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: FarmGame - Start GameDev
+  projectName: "Farmer\xB4s Quest"
   organizationId: unity_8b99695921e0ab78ef29
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

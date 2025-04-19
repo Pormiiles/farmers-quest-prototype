@@ -101666,10 +101666,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 791582970616805798, guid: 6ee1fe69f725e7d4785c93a611bff7f5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06
-      objectReference: {fileID: 0}
     - target: {fileID: 2345445319281669991, guid: 6ee1fe69f725e7d4785c93a611bff7f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.87
@@ -101730,6 +101726,10 @@ PrefabInstance:
       propertyPath: paths.Array.data[4]
       value: 
       objectReference: {fileID: 831836311}
+    - target: {fileID: 3667540336145884304, guid: 6ee1fe69f725e7d4785c93a611bff7f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9019608
+      objectReference: {fileID: 0}
     - target: {fileID: 5823671882344948126, guid: 6ee1fe69f725e7d4785c93a611bff7f5, type: 3}
       propertyPath: keyAdvice
       value: 
@@ -101853,10 +101853,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 980350518183363760, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 980350518183363760, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.76
       objectReference: {fileID: 0}
@@ -101896,21 +101892,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2579262135840513094, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
-      propertyPath: isFacingRight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2579262135840513094, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
-      propertyPath: shouldPlayerFlip
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8413279732667514590, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8609156876492791319, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
-      propertyPath: woodTotal
-      value: 0
+    - target: {fileID: 8913142932281240143, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9019608
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
