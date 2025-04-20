@@ -3,24 +3,27 @@ using UnityEngine;
 
 public class House : MonoBehaviour
 {
+    // Estados internos
     private bool isPlayerDetected;
     private bool isBuilding;
 
-    [Header("Configurações da Construção")]
+    [Header("Configurações")]
     [SerializeField] private float buildTime = 3f;
     [SerializeField] private int woodRequired = 10;
     [SerializeField] private Color startColor;
     [SerializeField] private Color endColor;
 
-    [Header("Referências")]
+    [Header("Posicionamento")]
     [SerializeField] private GameObject houseSprite;
     [SerializeField] private GameObject houseCollider;
     [SerializeField] private Transform playerBuildPoint;
 
+    [Header("Referências ao Player")]
     private Player player;
     private PlayerAnimation playerAnim;
     private PlayerItems playerItems;
 
+    [Header("Outros Objetos")]
     public GameObject farmGatesObject;
     public GameObject keyAdvice;
 
@@ -33,7 +36,7 @@ public class House : MonoBehaviour
 
     void Update()
     {
-        if(isPlayerDetected && !isBuilding &&
+        if (isPlayerDetected && !isBuilding &&
             Input.GetKeyDown(KeyCode.E) &&
             GameManager.instance.estadoLayla == EstadoLayla.DepoisDaCaverna &&
             playerItems.woodTotal >= woodRequired)
@@ -46,7 +49,7 @@ public class House : MonoBehaviour
     {
         isBuilding = true;
 
-        // Preparativos
+        // Posiciona o jogador e inicia a animação de construção
         player.transform.position = playerBuildPoint.position;
         player.IsPlayerSpeedPaused = true;
         playerAnim.onBuildingStart();
@@ -54,20 +57,18 @@ public class House : MonoBehaviour
         houseSprite.GetComponent<SpriteRenderer>().color = startColor;
         playerItems.woodTotal -= woodRequired;
 
-        // Tempo de construção
+        // Aguarda o tempo de construção
         yield return new WaitForSeconds(buildTime);
 
-        // Finaliza construção
+        // Finaliza construção e atualiza o jogo
         houseSprite.GetComponent<SpriteRenderer>().color = endColor;
         playerAnim.onBuildingEnd();
         player.IsPlayerSpeedPaused = false;
         houseCollider.SetActive(true);
 
-        // Atualiza estado da Layla
         GameManager.instance.estadoLayla = EstadoLayla.DepoisDeConstruirCasa;
         Debug.Log("Casa da Layla construída!");
 
-        // Libera o acesso ao vilarejo (portões abrem)
         openFarmGates();
     }
 
@@ -77,9 +78,10 @@ public class House : MonoBehaviour
         {
             isPlayerDetected = true;
 
-            if(GameManager.instance.estadoLayla == EstadoLayla.DepoisDaCaverna && playerItems.woodTotal >= 10)
+            if (GameManager.instance.estadoLayla == EstadoLayla.DepoisDaCaverna &&
+                playerItems.woodTotal >= woodRequired)
             {
-                keyAdvice.SetActive(true);
+                keyAdvice.SetActive(true); // Exibe dica para pressionar "E"
             }
         }
     }

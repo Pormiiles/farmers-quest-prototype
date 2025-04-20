@@ -23,6 +23,7 @@ MonoBehaviour:
         voc\xEA est\xE1 vivo! "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: 869a1e86d0abe7f4b8508dff90801b32, type: 3}
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
@@ -30,6 +31,7 @@ MonoBehaviour:
         de monstros que voc\xEA falou. "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: fe82578325d6bc84187a263504794070, type: 3}
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
@@ -37,6 +39,7 @@ MonoBehaviour:
         e tanto!"
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: 869a1e86d0abe7f4b8508dff90801b32, type: 3}
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
@@ -44,18 +47,21 @@ MonoBehaviour:
         sua casa, como posso ajudar? "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: fe82578325d6bc84187a263504794070, type: 3}
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
       portuguese: "(feliz) Ah, certo. Voc\xEA pode coletar 10 madeiras na floresta.  "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: 869a1e86d0abe7f4b8508dff90801b32, type: 3}
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
       portuguese: "Entendi. Onde ficava sua antiga casa que foi destru\xEDda?"
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: fe82578325d6bc84187a263504794070, type: 3}
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
@@ -64,9 +70,11 @@ MonoBehaviour:
         poder\xE1 construir. "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: 869a1e86d0abe7f4b8508dff90801b32, type: 3}
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
       portuguese: OK, pode deixar comigo! :)
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: fe82578325d6bc84187a263504794070, type: 3}

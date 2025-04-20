@@ -1,15 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
 using TMPro;
 
 public class DungeonUI : MonoBehaviour
 {
+    [Header("Painéis")]
     public GameObject dungeonUIPanel;
+    public GameObject gameOverPanel;
+
+    [Header("Textos e Barras")]
     public TMP_Text waveText;
     public Image playerHealthBarUI;
-    public GameObject gameOverPanel;
+
+    [Header("HUD")]
     public GameObject hudCollectable;
     public GameObject hudTools;
 
@@ -25,28 +29,25 @@ public class DungeonUI : MonoBehaviour
 
     void Update()
     {
-        // Se ainda não encontrou o WaveSpawner, tenta novamente
         if (waveSpawner == null)
         {
             waveSpawner = FindObjectOfType<WaveSpawner>();
-            if (waveSpawner == null) return; // Ainda não encontrou? Sai do update por agora.
+            if (waveSpawner == null) return;
         }
 
         if (player == null) return;
 
         dungeonUIPanel.SetActive(true);
 
-        // Atualiza os textos na UI
         waveText.text = "Onda: " + (waveSpawner.currentWaveIndex + 1);
         playerHealthBarUI.fillAmount = player.currentPlayerHealth / player.totalPlayerHealth;
 
-        // Desativa a UI assim que o Player vencer as ondas de inimigos
-        if(waveSpawner.didPlayerWin == true)
+        if (waveSpawner.didPlayerWin)
         {
             dungeonUIPanel.SetActive(false);
         }
 
-        if(player.isPlayerDead)
+        if (player.isPlayerDead)
         {
             hudCollectable.SetActive(false);
             hudTools.SetActive(false);
@@ -59,4 +60,3 @@ public class DungeonUI : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
-

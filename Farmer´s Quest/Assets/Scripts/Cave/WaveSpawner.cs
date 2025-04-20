@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
@@ -13,14 +12,20 @@ public class WaveSpawner : MonoBehaviour
         public float spawnInterval;
     }
 
+    [Header("Configuração das Ondas")]
     public Wave[] waves;
+    public Transform[] spawnPoints;
+
+    [Header("Geral")]
     public int currentWaveIndex = 0;
-    private int enemiesAlive = 0;
-    private bool waveInProgress = false;
     public GameObject dungeonGate;
     public AudioClip clip;
+
+    [Header("Status")]
     public bool didPlayerWin;
-    public Transform[] spawnPoints;
+
+    private int enemiesAlive = 0;
+    private bool waveInProgress = false;
 
     void Update()
     {
@@ -33,7 +38,8 @@ public class WaveSpawner : MonoBehaviour
         {
             dungeonGate.SetActive(false);
             Debug.Log("Você detonou todas as ondas de monstros! Agora vá e termine de salvar o dia!");
-            GameManager.instance.estadoLayla = EstadoLayla.DepoisDaCaverna; // Muda o estado da NPC e atualiza o diálogo dela
+
+            GameManager.instance.estadoLayla = EstadoLayla.DepoisDaCaverna;
             AudioManager.instance.playOneShotSound(clip);
             didPlayerWin = true;
         }
@@ -62,14 +68,15 @@ public class WaveSpawner : MonoBehaviour
         GameObject enemy = Instantiate(enemyToSpawn, spawnPoint.position, Quaternion.identity);
         enemiesAlive++;
 
+        // Conecta eventos de morte
         Skeleton skeleton = enemy.GetComponent<Skeleton>();
-        if(skeleton != null)
+        if (skeleton != null)
         {
             skeleton.onDeath += OnEnemyDeath;
         }
 
         Goblin goblin = enemy.GetComponent<Goblin>();
-        if(goblin != null)
+        if (goblin != null)
         {
             goblin.onDeath += OnEnemyDeath;
         }
@@ -78,9 +85,10 @@ public class WaveSpawner : MonoBehaviour
     void OnEnemyDeath()
     {
         enemiesAlive--;
+
         if (currentWaveIndex >= waves.Length && enemiesAlive <= 0)
         {
-            Debug.Log("Todas as ondas concluídas!"); 
+            Debug.Log("Todas as ondas concluídas!");
         }
     }
 }

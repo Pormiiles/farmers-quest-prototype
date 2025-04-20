@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -19,7 +16,6 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private float timeCount;
     [SerializeField] private float recoveryTime = 1.5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Player>();
@@ -28,14 +24,13 @@ public class PlayerAnimation : MonoBehaviour
         enemyAnim = GetComponent<SkeletonAnimation>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         onMove();
         onRun();
         onSwordAttack();
 
-        if(player.isPlayerDead)
+        if (player.isPlayerDead)
         {
             onPlayerDeath();
             return;
@@ -45,7 +40,6 @@ public class PlayerAnimation : MonoBehaviour
         {
             timeCount += Time.deltaTime;
 
-            // Espera o tempo de cooldown acabar para o esqueleto bate no player novamente
             if (timeCount >= recoveryTime)
             {
                 isHitting = false;
@@ -54,11 +48,51 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    #region Movement 
-
-    public void onIdle()
+    void onMove()
     {
-        anim.SetInteger("transition", 0);
+        if (player.playerDirection.sqrMagnitude > 0)
+        {
+            anim.SetInteger("transition", 1);
+        }
+        else
+        {
+            anim.SetInteger("transition", 0);
+        }
+
+        if (player.playerDirection.x > 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else if (player.playerDirection.x < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+
+        if (player.isPlayerCutting) anim.SetInteger("transition", 3);
+        if (player.isPlayerDigging) anim.SetInteger("transition", 4);
+        if (player.IsPlayerWatering) anim.SetInteger("transition", 5);
+    }
+
+    void onRun()
+    {
+        if (player.isPlayerRunning && player.playerDirection.sqrMagnitude > 0)
+        {
+            anim.SetInteger("transition", 2);
+        }
+    }
+
+    void onSwordAttack()
+    {
+        if (player.IsPlayerAttacking)
+        {
+            anim.SetInteger("transition", 6);
+        }
+    }
+
+    void onPlayerDeath()
+    {
+        anim.ResetTrigger("isHit");
+        anim.SetTrigger("isDead");
     }
 
     void onAttackEnemy()
@@ -70,74 +104,14 @@ public class PlayerAnimation : MonoBehaviour
             Skeleton skeleton = hit.GetComponentInParent<Skeleton>();
             Goblin goblin = hit.GetComponentInParent<Goblin>();
 
-            if (skeleton != null)
-            {
-                skeleton.TakeDamage(1f); // Aplica 1 ponto de dano
-            }
-            if(goblin != null)
-            {
-                goblin.TakeDamage(1f); // Aplica 1 ponto de dano
-            }
+            if (skeleton != null) skeleton.TakeDamage(1f);
+            if (goblin != null) goblin.TakeDamage(1f);
         }
     }
 
-    void onPlayerDeath()
+    public void onIdle()
     {
-        anim.ResetTrigger("isHit");
-        anim.SetTrigger("isDead");
-    }
-
-    void onSwordAttack()
-    {
-        if(player.IsPlayerAttacking)
-        {
-            anim.SetInteger("transition", 6);
-        }
-    }
-
-    void onMove()
-    {
-        if (player.playerDirection.sqrMagnitude > 0) // Se o player estiver se movimentando
-        {
-            anim.SetInteger("transition", 1);
-        }
-        else
-        {
-            anim.SetInteger("transition", 0); // Se não estiver andando, ele entra na animação de Idle
-        }
-
-        // Verifica a direção horizontal
-        if (player.playerDirection.x > 0)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f); // Direita
-        }
-        else if (player.playerDirection.x < 0)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f); // Esquerda (espelha no eixo X - o sprite é invertido)
-        }
-
-        if (player.isPlayerCutting)
-        {
-            anim.SetInteger("transition", 3);
-        }
-
-        if (player.isPlayerDigging)
-        {
-            anim.SetInteger("transition", 4);
-        }
-
-        if (player.IsPlayerWatering)
-        {
-            anim.SetInteger("transition", 5);
-        }
-    }
-
-    void onRun()
-    {
-        if (player.isPlayerRunning && player.playerDirection.sqrMagnitude > 0)
-        {
-            anim.SetInteger("transition", 2);
-        }
+        anim.SetInteger("transition", 0);
     }
 
     public void onCastingStart()
@@ -162,7 +136,7 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetBool("isHammering", false);
     }
 
-    public void onHit() // Recebe o dano
+    public void onHit()
     {
         if (!isHitting)
         {
@@ -170,5 +144,4 @@ public class PlayerAnimation : MonoBehaviour
             isHitting = true;
         }
     }
-    #endregion
 }

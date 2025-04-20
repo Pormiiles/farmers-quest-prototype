@@ -31,6 +31,12 @@ public class DialogueController : MonoBehaviour
 
     public LanguagesEnum language;
 
+    [Header("Audio")]
+    public AudioSource voiceSource; // arraste um AudioSource no inspector
+    public float voicePitchVariation = 0.05f; // variação para parecer mais "vivo"
+    private List<AudioClip> currentVoices = new List<AudioClip>();
+
+
     public static DialogueController instance;
 
     public bool IsWindowBeingShowed { get => isWindowBeingShowed; set => isWindowBeingShowed = value; }
@@ -42,17 +48,27 @@ public class DialogueController : MonoBehaviour
 
     IEnumerator TypeSentence()
     {
-        // Atualiza nome e sprite do ator para essa sentença
         actorNameText.text = actorNames[index];
         profileSprite.sprite = actorSprites[index];
-
         speechText.text = "";
+
+        // Obtemos o som de voz da NPC atual
+        AudioClip currentVoice = currentVoices[index];
+
         foreach (char letter in sentences[index].ToCharArray())
         {
             speechText.text += letter;
+
+            if (!char.IsWhiteSpace(letter) && currentVoice != null)
+            {
+                voiceSource.pitch = 1f + Random.Range(-voicePitchVariation, voicePitchVariation);
+                voiceSource.PlayOneShot(currentVoice);
+            }
+
             yield return new WaitForSeconds(typingSpeed);
         }
     }
+
 
     public void NextSentence()
     {
@@ -72,7 +88,7 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    public void Speech(List<string> lines, List<string> names, List<Sprite> sprites)
+    public void Speech(List<string> lines, List<string> names, List<Sprite> sprites, List<AudioClip> voiceClips)
     {
         if (!IsWindowBeingShowed)
         {
@@ -80,7 +96,8 @@ public class DialogueController : MonoBehaviour
             sentences = lines;
             actorNames = names;
             actorSprites = sprites;
-            
+            currentVoices = voiceClips;
+
             index = 0;
             StartCoroutine(TypeSentence());
             IsWindowBeingShowed = true;

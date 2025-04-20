@@ -5297,15 +5297,15 @@ MonoBehaviour:
     - {fileID: 7802257016303101133, guid: 51ba07a49cbdb5143964493737492a97, type: 3}
     enemyCount: 6
     spawnInterval: 7
-  currentWaveIndex: 0
-  dungeonGate: {fileID: 1005382499}
-  clip: {fileID: 8300000, guid: 7e2790c0f29367c4bbb9547ec4cdc8b9, type: 3}
-  didPlayerWin: 0
   spawnPoints:
   - {fileID: 953525731}
   - {fileID: 1644136918}
   - {fileID: 1026653845}
   - {fileID: 887499815}
+  currentWaveIndex: 0
+  dungeonGate: {fileID: 1005382499}
+  clip: {fileID: 8300000, guid: 7e2790c0f29367c4bbb9547ec4cdc8b9, type: 3}
+  didPlayerWin: 0
 --- !u!4 &833424349
 Transform:
   m_ObjectHideFlags: 0
@@ -7059,9 +7059,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeonUIPanel: {fileID: 1418833500}
+  gameOverPanel: {fileID: 1257892085}
   waveText: {fileID: 207500159}
   playerHealthBarUI: {fileID: 792841953}
-  gameOverPanel: {fileID: 1257892085}
   hudCollectable: {fileID: 1611310929}
   hudTools: {fileID: 1200684460}
 --- !u!1 &1165006555
@@ -14578,6 +14578,10 @@ PrefabInstance:
     - target: {fileID: 8413279732667514590, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913142932281240143, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

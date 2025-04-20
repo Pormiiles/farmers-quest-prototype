@@ -1,25 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    [SerializeField] private Boolean playerDetected;
+    [SerializeField] private bool playerDetected;
     private PlayerItems player;
     [SerializeField] private float waterValue;
     public GameObject keyAdvice;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerItems>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(playerDetected && Input.GetKeyDown(KeyCode.E)) 
+        if (playerDetected && Input.GetKeyDown(KeyCode.E))
         {
             player.WaterLimit(waterValue);
         }
@@ -27,7 +23,7 @@ public class Water : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             playerDetected = true;
             keyAdvice.SetActive(true);

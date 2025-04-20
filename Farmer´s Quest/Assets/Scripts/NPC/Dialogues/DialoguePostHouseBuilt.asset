@@ -22,12 +22,14 @@ MonoBehaviour:
       portuguese: "Prontinho! Casa reconstru\xEDda. Novinha em folha. "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: fe82578325d6bc84187a263504794070, type: 3}
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
       portuguese: "(entusiasmada) N\xE3o sei nem como posso te agradecer! "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: 869a1e86d0abe7f4b8508dff90801b32, type: 3}
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
@@ -35,12 +37,14 @@ MonoBehaviour:
         fazenda e s\xF3 decidi verificar. Qualquer um teria feito isso! "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: fe82578325d6bc84187a263504794070, type: 3}
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
       portuguese: "Fico at\xE9 sem jeito! (risos) "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: 869a1e86d0abe7f4b8508dff90801b32, type: 3}
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
@@ -48,12 +52,14 @@ MonoBehaviour:
         fossem abertos novamente? Incr\xEDvel!"
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: 869a1e86d0abe7f4b8508dff90801b32, type: 3}
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
       portuguese: "N\xE3o foi nada, mexi uns pauzinhos aqui e... TCHARAM!"
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: fe82578325d6bc84187a263504794070, type: 3}
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
@@ -61,12 +67,14 @@ MonoBehaviour:
         voltinha pelo vilarejo? Todo mundo vai querer te conhecer."
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: 869a1e86d0abe7f4b8508dff90801b32, type: 3}
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
       portuguese: "Claro, podemos ir l\xE1. "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: fe82578325d6bc84187a263504794070, type: 3}
   - actorName: Layla
     profile: {fileID: 21300000, guid: 77bc06e651175c04c9d780fca79940f8, type: 3}
     sentence:
@@ -75,9 +83,11 @@ MonoBehaviour:
         para o Sul. "
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: 869a1e86d0abe7f4b8508dff90801b32, type: 3}
   - actorName: Fazendeiro
     profile: {fileID: 21300000, guid: f17fee864f3b837479025f48bbda96cd, type: 3}
     sentence:
       portuguese: "Te vejo l\xE1, ent\xE3o!"
       english: 
       spanish: 
+    voiceClip: {fileID: 8300000, guid: fe82578325d6bc84187a263504794070, type: 3}

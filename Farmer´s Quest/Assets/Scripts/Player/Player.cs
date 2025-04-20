@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Player attributes
-    private bool isPlayerSpeedPaused;
+    #region Atributos e Componentes
 
+    private Rigidbody2D rig;
+    private PlayerItems playerItems;
+    private DungeonUI dungeonUI;
+
+    [Header("Movimento e status")]
+    private bool isPlayerSpeedPaused;
     private float playerInitialSpeed;
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerRunSpeed;
     [SerializeField] private float playerRollSpeed;
+    private Vector2 _playerDirection;
+    private bool canRoll = true;
+    [SerializeField] private float rollCooldown = 1.5f;
+
+    [Header("Ferramentas e ações")]
+    [SerializeField] private int handlingTool;
     private bool _isPlayerRunning;
     private bool _isPlayerRolling;
     private bool _isPlayerCutting;
@@ -18,92 +29,47 @@ public class Player : MonoBehaviour
     private bool _isPlayerWatering;
     private bool _isPlayerAttacking;
 
-    private Rigidbody2D rig;
-    private Vector2 _playerDirection;
-
-    private bool canRoll = true;
-    [SerializeField] private float rollCooldown = 1.5f;
-
-    [SerializeField] private int handlingTool;
-
-    private PlayerItems playerItems;
-
+    [Header("Vida e morte")]
     public float totalPlayerHealth;
     public float currentPlayerHealth;
     public bool isPlayerDead;
-
     public AudioClip playerDeathBGMClip;
 
-    private DungeonUI dungeonUI;
+    #endregion
 
-    // Player properties
-    public Vector2 playerDirection
-    {
-        get { return _playerDirection; }
-        set { _playerDirection = value; }
-    }
+    #region Propriedades
 
-    public bool isPlayerRunning
-    {
-        get { return _isPlayerRunning; }
-        set { _isPlayerRunning = value;  }
-    }
-
-    public bool isPlayerRolling
-    {
-        get { return _isPlayerRolling; }
-        set { _isPlayerRolling = value; }
-    }
-
-    public bool isPlayerCutting
-    {
-        get { return _isPlayerCutting; }
-        set { _isPlayerCutting = value; }
-    }
-
-    public bool isPlayerDigging { 
-        get => _isPlayerDigging; 
-        set => _isPlayerDigging = value; 
-    }
-
+    public Vector2 playerDirection { get => _playerDirection; set => _playerDirection = value; }
+    public bool isPlayerRunning { get => _isPlayerRunning; set => _isPlayerRunning = value; }
+    public bool isPlayerRolling { get => _isPlayerRolling; set => _isPlayerRolling = value; }
+    public bool isPlayerCutting { get => _isPlayerCutting; set => _isPlayerCutting = value; }
+    public bool isPlayerDigging { get => _isPlayerDigging; set => _isPlayerDigging = value; }
     public bool IsPlayerWatering { get => _isPlayerWatering; set => _isPlayerWatering = value; }
     public int HandlingTool { get => handlingTool; set => handlingTool = value; }
     public bool IsPlayerSpeedPaused { get => isPlayerSpeedPaused; set => isPlayerSpeedPaused = value; }
     public bool IsPlayerAttacking { get => _isPlayerAttacking; set => _isPlayerAttacking = value; }
+
+    #endregion
+
+    #region Ciclo de Vida
 
     private void Start()
     {
         currentPlayerHealth = totalPlayerHealth;
         rig = GetComponent<Rigidbody2D>();
         playerItems = GetComponent<PlayerItems>();
-        playerInitialSpeed = playerSpeed; // It storages the player´s initial walk speed when the game starts 
+        playerInitialSpeed = playerSpeed;
         dungeonUI = FindObjectOfType<DungeonUI>();
     }
 
     private void Update()
     {
-        if(!isPlayerSpeedPaused)
+        if (!isPlayerSpeedPaused)
         {
-            // Lógica simples de interface de Inventário
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                HandlingTool = 1;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                HandlingTool = 2;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                HandlingTool = 3;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                HandlingTool = 4;
-            }
+            if (Input.GetKeyDown(KeyCode.Alpha1)) HandlingTool = 1;
+            if (Input.GetKeyDown(KeyCode.Alpha2)) HandlingTool = 2;
+            if (Input.GetKeyDown(KeyCode.Alpha3)) HandlingTool = 3;
+            if (Input.GetKeyDown(KeyCode.Alpha4)) HandlingTool = 4;
 
             onInput();
             onRun();
@@ -117,15 +83,137 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isPlayerSpeedPaused)
+        if (!isPlayerSpeedPaused)
         {
             onMove();
         }
     }
 
-    #region Movement
+    #endregion
 
-    void onSwordAttack() // Ataque do player
+    #region Ações do Jogador
+
+    void onInput()
+    {
+        _playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    }
+
+    void onMove()
+    {
+        Vector2 normalizedDirection = _playerDirection.normalized;
+        rig.MovePosition(rig.position + normalizedDirection * playerSpeed * Time.fixedDeltaTime);
+    }
+
+    void onRun()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            playerSpeed = playerRunSpeed;
+            _isPlayerRunning = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            playerSpeed = playerInitialSpeed;
+            _isPlayerRunning = false;
+        }
+    }
+
+    void onRoll()
+    {
+        if (Input.GetMouseButtonDown(1) && canRoll)
+        {
+            _isPlayerRolling = true;
+            GetComponent<Animator>().SetTrigger("isRolling");
+            playerSpeed = playerRollSpeed;
+            canRoll = false;
+            StartCoroutine(EndRoll());
+        }
+    }
+
+    private IEnumerator EndRoll()
+    {
+        yield return new WaitForSeconds(0.09f);
+        _isPlayerRolling = false;
+        playerSpeed = playerInitialSpeed;
+        GetComponent<Animator>().SetTrigger("isRolling");
+        StartCoroutine(RollCooldown());
+    }
+
+    private IEnumerator RollCooldown()
+    {
+        yield return new WaitForSeconds(rollCooldown);
+        canRoll = true;
+    }
+
+    void onCutting()
+    {
+        if (HandlingTool == 2)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                isPlayerCutting = true;
+                playerSpeed = 0f;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                isPlayerCutting = false;
+                playerSpeed = playerInitialSpeed;
+            }
+        }
+        else
+        {
+            isPlayerCutting = false;
+        }
+    }
+
+    void onDigging()
+    {
+        if (HandlingTool == 1)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                isPlayerDigging = true;
+                playerSpeed = 0f;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                isPlayerDigging = false;
+                playerSpeed = playerInitialSpeed;
+            }
+        }
+        else
+        {
+            isPlayerDigging = false;
+        }
+    }
+
+    void onWatering()
+    {
+        if (HandlingTool == 3)
+        {
+            if (Input.GetMouseButtonDown(0) && playerItems.waterTotal > 0)
+            {
+                IsPlayerWatering = true;
+                playerSpeed = 0f;
+            }
+            else if (Input.GetMouseButtonUp(0) || playerItems.waterTotal < 0)
+            {
+                IsPlayerWatering = false;
+                playerSpeed = playerInitialSpeed;
+            }
+
+            if (IsPlayerWatering)
+            {
+                playerItems.waterTotal -= 0.02f;
+            }
+        }
+        else
+        {
+            IsPlayerWatering = false;
+        }
+    }
+
+    void onSwordAttack()
     {
         if (HandlingTool == 4)
         {
@@ -145,6 +233,10 @@ public class Player : MonoBehaviour
             IsPlayerAttacking = false;
         }
     }
+
+    #endregion
+
+    #region Vida e Morte
 
     public void TakeDamage(float amount)
     {
@@ -170,147 +262,15 @@ public class Player : MonoBehaviour
         AudioManager.instance.playBGM(playerDeathBGMClip);
     }
 
-    void onDigging()
-    {
-        if(HandlingTool == 1)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                isPlayerDigging = true;
-                playerSpeed = 0f;
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                isPlayerDigging = false;
-                playerSpeed = playerInitialSpeed;
-            }
-        } else
-        {
-            isPlayerDigging = false;
-        }
-    }
-
-    void onCutting()
-    {
-        if(HandlingTool == 2)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                isPlayerCutting = true;
-                playerSpeed = 0f;
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                isPlayerCutting = false;
-                playerSpeed = playerInitialSpeed;
-            }
-        } else
-        {
-            isPlayerCutting = false;
-        }
-    }
-
-    void onWatering()
-    {
-        if (HandlingTool == 3)
-        {
-            if (Input.GetMouseButtonDown(0) && playerItems.waterTotal > 0)
-            {
-                IsPlayerWatering = true;
-                playerSpeed = 0f;
-            }
-            else if (Input.GetMouseButtonUp(0) || playerItems.waterTotal < 0)
-            {
-                IsPlayerWatering = false;
-                playerSpeed = playerInitialSpeed;
-            }
-
-            if(IsPlayerWatering)
-            {
-                playerItems.waterTotal -= 0.02f;
-            }
-        } else
-        {
-            IsPlayerWatering = false;
-        }
-    }
-
-    void onInput()
-    {
-        _playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    }
-
-    void onMove()
-    {
-        // Normaliza a direção para evitar que a velocidade aumente na diagonal
-        Vector2 normalizedDirection = _playerDirection.normalized;
-
-        // Move o player com a direção normalizada
-        rig.MovePosition(rig.position + normalizedDirection * playerSpeed * Time.fixedDeltaTime);
-    }
-
-    void onRun()
-    {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            playerSpeed = playerRunSpeed;
-            _isPlayerRunning = true; // Yes, the player's running
-        }
-        else if(Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            playerSpeed = playerInitialSpeed;
-            _isPlayerRunning = false; // No, the player´s not running
-        }
-    }
-
-    void onRoll()
-    {
-        if (Input.GetMouseButtonDown(1) && canRoll) // Se o botão direito do mouse for pressionado e o player puder rolar
-        {
-            _isPlayerRolling = true; // Ativa a rolagem
-
-            GetComponent<Animator>().SetTrigger("isRolling");
-
-            playerSpeed = playerRollSpeed; // Altera a velocidade para a de rolagem
-            canRoll = false; // Bloqueia a rolagem até que o cooldown termine
-
-
-            StartCoroutine(EndRoll()); // Finaliza a rolagem após o tempo da animação
-        }
-    }
-
-    // Método para finalizar a rolagem após um tempo fixo
-    private IEnumerator EndRoll()
-    {
-        yield return new WaitForSeconds(0.09f); // Duração da animação de rolagem (ajuste conforme necessário)
-        _isPlayerRolling = false; // Finaliza a rolagem
-        playerSpeed = playerInitialSpeed; // Restaura a velocidade inicial do player
-
-        GetComponent<Animator>().SetTrigger("isRolling");
-
-        StartCoroutine(RollCooldown()); // Inicia o cooldown para liberar a rolagem novamente
-    }
-
-    // Método para controlar o cooldown
-    private IEnumerator RollCooldown()
-    {
-        yield return new WaitForSeconds(rollCooldown); // Tempo do cooldown
-        canRoll = true; // Permite que o player role novamente
-    }
-
     public void DisablePlayerControls()
     {
         IsPlayerSpeedPaused = true;
-
-        // Cancela qualquer ação ativa
         isPlayerDigging = false;
         isPlayerCutting = false;
         IsPlayerWatering = false;
         IsPlayerAttacking = false;
         _isPlayerRolling = false;
         _isPlayerRunning = false;
-
-        // Zera movimento do player imediatamente
         _playerDirection = Vector2.zero;
         playerSpeed = 0f;
     }
@@ -318,12 +278,12 @@ public class Player : MonoBehaviour
     public void EnablePlayerControls()
     {
         IsPlayerSpeedPaused = false;
-
-        // Restaura a velocidade normal
         playerSpeed = playerInitialSpeed;
     }
 
     #endregion
+
+    #region Interações
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -332,15 +292,10 @@ public class Player : MonoBehaviour
             Skeleton skeleton = collision.GetComponent<Skeleton>();
             Goblin goblin = collision.GetComponent<Goblin>();
 
-            if (skeleton != null)
-            {
-                skeleton.TakeDamage(1f);
-            }
-
-            if(goblin != null)
-            {
-                goblin.TakeDamage(1f);
-            }
+            if (skeleton != null) skeleton.TakeDamage(1f);
+            if (goblin != null) goblin.TakeDamage(1f);
         }
     }
+
+    #endregion
 }

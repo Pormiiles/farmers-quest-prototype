@@ -44,7 +44,7 @@ public class Skeleton : MonoBehaviour
                 transform.position += direction * agent.speed * Time.deltaTime;
             }
 
-            if (Vector2.Distance(transform.position, playerPosition.transform.position) <= agent.stoppingDistance)
+            if (Vector2.Distance(transform.position, playerPosition.position) <= agent.stoppingDistance)
             {
                 anim.PlayAnim(2);
             }
@@ -53,8 +53,7 @@ public class Skeleton : MonoBehaviour
                 anim.PlayAnim(1);
             }
 
-            float posX = playerPosition.transform.position.x - transform.position.x;
-
+            float posX = playerPosition.position.x - transform.position.x;
             transform.eulerAngles = (posX > 0) ? new Vector2(0, 0) : new Vector2(0, 180);
         }
 
@@ -74,7 +73,7 @@ public class Skeleton : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount) // Esqueleto recebe dano
+    public void TakeDamage(float amount)
     {
         if (isDead) return;
 
@@ -84,7 +83,7 @@ public class Skeleton : MonoBehaviour
             healthBar.fillAmount = currentHealth / totalHealth;
 
         if (anim != null)
-            anim.PlayHit(); // Toca animação de hit
+            anim.PlayHit();
 
         if (currentHealth <= 0)
         {
@@ -97,19 +96,14 @@ public class Skeleton : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-
-        Debug.Log("Skeleton morreu");
-
-        anim.PlayDeath(); // Toca a animação de morte
-
-        onDeath?.Invoke(); // Notifica o WaveManager
-
-        Destroy(gameObject, 1f); // Destroi após 1s
+        anim.PlayDeath();
+        onDeath?.Invoke();
+        Destroy(gameObject, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             player.TakeDamage(damage);
         }

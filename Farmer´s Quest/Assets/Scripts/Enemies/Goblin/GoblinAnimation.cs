@@ -10,7 +10,6 @@ public class GoblinAnimation : MonoBehaviour
 
     private Animator anim;
     private PlayerAnimation playerAnim;
-    private Player player;
     private Goblin goblin;
 
     void Start()
@@ -25,12 +24,12 @@ public class GoblinAnimation : MonoBehaviour
         anim.SetInteger("transition", value);
     }
 
-    public void PlayHit() // Toca a animação do goblin recebendo dano
+    public void PlayHit()
     {
         anim.SetTrigger("isHit");
     }
 
-    public void PlayDeath() // Toca a animação do goblin morrendo
+    public void PlayDeath()
     {
         anim.ResetTrigger("isHit");
         anim.SetTrigger("isDead");

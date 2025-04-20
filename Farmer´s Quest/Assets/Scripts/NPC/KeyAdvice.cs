@@ -9,6 +9,6 @@ public class KeyAdvice : MonoBehaviour
 
     void Update()
     {
-        transform.position = npc.position + offset;
+        transform.position = npc.position + offset; // O texto segue o gameObject da NPC Layla
     }
 }

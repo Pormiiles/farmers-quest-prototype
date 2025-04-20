@@ -22,6 +22,8 @@ public class Sentences
     public string actorName;
     public Sprite profile;
     public Languages sentence;
+    [Header("Voice Settings")]
+    public AudioClip voiceClip;
 }
 
 [System.Serializable]

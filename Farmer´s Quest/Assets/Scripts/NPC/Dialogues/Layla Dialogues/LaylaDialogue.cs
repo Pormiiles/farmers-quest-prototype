@@ -25,6 +25,7 @@ public class LaylaDialogue : MonoBehaviour
     private List<string> sentences = new List<string>();
     private List<string> actorNames = new List<string>();
     private List<Sprite> actorSprites = new List<Sprite>();
+    private List<AudioClip> actorVoices = new List<AudioClip>();
 
     private EstadoLayla estadoAnterior;
 
@@ -45,7 +46,7 @@ public class LaylaDialogue : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && playerHit)
         {
-            DialogueController.instance.Speech(sentences, actorNames, actorSprites);
+            DialogueController.instance.Speech(sentences, actorNames, actorSprites, actorVoices);
             keyAdvice.SetActive(true);
 
             // player não pode se mover enquanto a caixa de diálogo estiver ativa
@@ -72,6 +73,7 @@ public class LaylaDialogue : MonoBehaviour
         sentences.Clear();
         actorNames.Clear();
         actorSprites.Clear();
+        actorVoices.Clear();
 
         DialoguesSettings dialogoAtual = antesDaCaverna;
 
@@ -91,12 +93,15 @@ public class LaylaDialogue : MonoBehaviour
             {
                 case DialogueController.LanguagesEnum.PT:
                     sentences.Add(s.sentence.portuguese);
+                    actorVoices.Add(s.voiceClip);
                     break;
                 case DialogueController.LanguagesEnum.ENG:
                     sentences.Add(s.sentence.english);
+                    actorVoices.Add(s.voiceClip);
                     break;
                 case DialogueController.LanguagesEnum.SPA:
                     sentences.Add(s.sentence.spanish);
+                    actorVoices.Add(s.voiceClip);
                     break;
             }
 

@@ -54,7 +54,6 @@ public class Goblin : MonoBehaviour
             }
 
             float posX = playerPosition.transform.position.x - transform.position.x;
-
             transform.eulerAngles = (posX > 0) ? new Vector2(0, 0) : new Vector2(0, 180);
         }
 
@@ -74,7 +73,7 @@ public class Goblin : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount) // Goblin recebe dano
+    public void TakeDamage(float amount)
     {
         if (isDead) return;
 
@@ -84,7 +83,7 @@ public class Goblin : MonoBehaviour
             healthBar.fillAmount = currentHealth / totalHealth;
 
         if (anim != null)
-            anim.PlayHit(); // Toca animação de hit
+            anim.PlayHit();
 
         if (currentHealth <= 0)
         {
@@ -98,13 +97,9 @@ public class Goblin : MonoBehaviour
 
         isDead = true;
 
-        Debug.Log("Goblin morreu");
-
-        anim.PlayDeath(); // Toca a animação de morte
-
-        onDeath?.Invoke(); // Notifica o WaveManager
-
-        Destroy(gameObject, 1f); // Destroi após 1s
+        anim.PlayDeath();
+        onDeath?.Invoke();
+        Destroy(gameObject, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

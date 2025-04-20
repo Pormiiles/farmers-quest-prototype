@@ -23,12 +23,12 @@ public class SkeletonAnimation : MonoBehaviour
         anim.SetInteger("transition", value);
     }
 
-    public void PlayHit() // Toca a animação do esqueleto recebendo dano
+    public void PlayHit()
     {
         anim.SetTrigger("hit");
     }
 
-    public void PlayDeath() // Toca a animação do esqueleto morrendo
+    public void PlayDeath()
     {
         anim.ResetTrigger("hit");
         anim.SetTrigger("isDead");

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
 {
+    [Header("Configurações")]
     [SerializeField] private Image waterBarUI;
     [SerializeField] private Text woodNumberText;
     [SerializeField] private Text carrotNumberText;
