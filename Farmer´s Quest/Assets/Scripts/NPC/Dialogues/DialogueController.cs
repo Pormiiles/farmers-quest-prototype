@@ -89,8 +89,10 @@ public class DialogueController : MonoBehaviour
 
     public void closeWindow()
     {
+        StopAllCoroutines(); // Para a execução da corrotina TypeSentence
         dialogueWindowObj.SetActive(false);
         isWindowBeingShowed = false;
         index = 0;
+        speechText.text = ""; 
     }
 }

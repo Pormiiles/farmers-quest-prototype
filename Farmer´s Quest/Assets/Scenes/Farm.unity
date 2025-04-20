@@ -1474,7 +1474,7 @@ PrefabInstance:
     - target: {fileID: 7971645230292281166, guid: 37b192f2dc8bff14dac4897c7b2789ac, type: 3}
       propertyPath: bgmMusic
       value: 
-      objectReference: {fileID: 8300000, guid: a54dad2e5d0c21e4bb1318810c30b228, type: 3}
+      objectReference: {fileID: 8300000, guid: 28bef7877b36294449bac862e67c006f, type: 3}
     - target: {fileID: 8220042369188035738, guid: 37b192f2dc8bff14dac4897c7b2789ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.47688
@@ -100652,10 +100652,6 @@ PrefabInstance:
       propertyPath: paths.Array.data[4]
       value: 
       objectReference: {fileID: 831836311}
-    - target: {fileID: 3667540336145884304, guid: 6ee1fe69f725e7d4785c93a611bff7f5, type: 3}
-      propertyPath: m_Color.a
-      value: 0.9019608
-      objectReference: {fileID: 0}
     - target: {fileID: 5823671882344948126, guid: 6ee1fe69f725e7d4785c93a611bff7f5, type: 3}
       propertyPath: keyAdvice
       value: 
@@ -100761,6 +100757,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueWindow_HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 5353469018100661553, guid: 7c4ea1584a9a35840a89ac2c8bd2ed15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8244630387250914346, guid: 7c4ea1584a9a35840a89ac2c8bd2ed15, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -100782,14 +100782,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 427229128048519135, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
-      propertyPath: m_Size.y
-      value: 0.5763614
-      objectReference: {fileID: 0}
-    - target: {fileID: 427229128048519135, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.15934312
-      objectReference: {fileID: 0}
     - target: {fileID: 980350518183363760, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.76
@@ -100833,10 +100825,6 @@ PrefabInstance:
     - target: {fileID: 8413279732667514590, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8913142932281240143, guid: 44cafc0f54e6f2642b0ef786a95072e7, type: 3}
-      propertyPath: m_Color.a
-      value: 0.9019608
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
